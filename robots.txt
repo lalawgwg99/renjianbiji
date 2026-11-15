@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://renjianbiji.pages.dev/sitemap.xml
