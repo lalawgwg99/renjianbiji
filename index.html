@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="zh-Hant" data-lang="zh" data-bg="paper">
+<html lang="zh-Hant" data-lang="zh">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="color-scheme" content="light dark" />
+<meta name="color-scheme" content="dark" />
 <link rel="icon" href="data:," />
 <title>人間筆記 · Notes on Being Human</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,20 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --accent:#4823FF;
-    --serif:"Noto Serif TC","Noto Serif",Georgia,serif;
-    --sans:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
-    --radius:18px;
-  }
-  html[data-bg="paper"]{
-    --bg:#FAF8F2; --bg-deep:#F4F1E8; --surface:#FFFEFA; --surface-2:#FFFFFF;
-    --ink:#23201A; --ink-soft:#4E4A40; --muted:#8E887B; --line:#E7E2D4; --line-strong:#D8D1BE;
-    color-scheme:light;
-  }
-  html[data-bg="black"]{
     --bg:#0E0E0D; --bg-deep:#0A0A09; --surface:#171716; --surface-2:#1C1C1A;
     --ink:#F0EAD3; --ink-soft:#CFC7AC; --muted:#9A8F76; --line:#2E2C26; --line-strong:#3E3A30;
     --accent:#A99CFF;
+    --serif:"Noto Serif TC","Noto Serif",Georgia,serif;
+    --sans:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+    --radius:18px;
     color-scheme:dark;
   }
   *{box-sizing:border-box}
@@ -55,15 +47,9 @@
   .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
   @media(max-width:640px){.controls{justify-content:center;gap:6px}.seg button{padding:6px 11px;font-size:12px}.topbar-in{gap:10px}}
   .seg{display:flex;align-items:center;background:transparent;border:1px solid var(--line);border-radius:999px;padding:2px;gap:2px}
-  html[data-bg="black"] .seg{border-color:var(--line)}
   .seg button{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;color:var(--muted);font-size:12.5px;font-weight:500;letter-spacing:.05em;line-height:1;white-space:nowrap;transition:color .18s ease,background .18s ease,box-shadow .18s ease}
   .seg button:hover{color:var(--ink)}
-  .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(72,66,50,.10),inset 0 0 0 1px var(--line)}
-  html[data-bg="black"] .seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.30),inset 0 0 0 1px var(--line-strong)}
-  .seg .dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;border:1px solid var(--line-strong)}
-  .seg .dot-paper{background:#FAF8F2}
-  .seg .dot-black{background:#2A2A28;border-color:var(--line-strong)}
-  .seg button[aria-pressed="true"] .dot{border-color:var(--line-strong)}
+  .seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.30),inset 0 0 0 1px var(--line-strong)}
 
   /* ——— Layout: LEFT sidebar (as requested) ——— */
   .home-grid{display:grid;grid-template-columns:248px minmax(0,1fr);gap:28px 44px;align-items:start;padding-bottom:8px}
@@ -187,10 +173,6 @@
       <div class="seg" role="group" aria-label="Language / 語言">
         <button id="btn-zh" aria-pressed="true">繁中</button>
         <button id="btn-en" aria-pressed="false">EN</button>
-      </div>
-      <div class="seg" role="group" aria-label="Background / 背景">
-        <button id="btn-paper" aria-pressed="true"><span class="dot dot-paper" aria-hidden="true"></span><span class="lz">米黃</span><span class="le">Beige</span></button>
-        <button id="btn-black" aria-pressed="false"><span class="dot dot-black" aria-hidden="true"></span><span class="lz">黑</span><span class="le">Black</span></button>
       </div>
     </div>
   </div>
@@ -2001,11 +1983,6 @@
     document.getElementById('btn-zh').setAttribute('aria-pressed', lang === 'zh');
     document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
   }
-  function setBg(bg){
-    document.documentElement.dataset.bg = bg;
-    document.getElementById('btn-paper').setAttribute('aria-pressed', bg === 'paper');
-    document.getElementById('btn-black').setAttribute('aria-pressed', bg === 'black');
-  }
   function filterCat(btn){
     var chips = document.querySelectorAll('.chip');
     for (var i = 0; i < chips.length; i++) chips[i].setAttribute('aria-pressed','false');
@@ -2019,8 +1996,6 @@
   }
   document.getElementById('btn-zh').addEventListener('click', function(){ setLang('zh'); });
   document.getElementById('btn-en').addEventListener('click', function(){ setLang('en'); });
-  document.getElementById('btn-paper').addEventListener('click', function(){ setBg('paper'); });
-  document.getElementById('btn-black').addEventListener('click', function(){ setBg('black'); });
   document.getElementById('btn-home').addEventListener('click', function(){ showHome(); });
   var chipBtns = document.querySelectorAll('.chip');
   for (var c = 0; c < chipBtns.length; c++){
