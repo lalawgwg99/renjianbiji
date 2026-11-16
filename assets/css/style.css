@@ -22,7 +22,7 @@ button{font-family:var(--sans);cursor:pointer}
 h1,h2,h3{font-weight:700;line-height:1.35}
 .skip{position:absolute;left:-9999px}
 /* ---------- header ---------- */
-.site-header{position:sticky;top:0;z-index:60;background:rgba(250,247,240,.96);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line)}
 .header-in{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;min-height:60px}
 @media(max-width:640px){.header-in{padding:0 16px;gap:12px}}
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
@@ -190,6 +190,15 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .sources li{font-family:var(--sans);font-size:14.5px;line-height:1.9;color:var(--ink2);margin:6px 0;word-break:break-word}
 .sources li a{color:var(--green)}
 .sources .src-note{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:12px}
+.src-grade{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;line-height:1;border:1px solid;border-radius:999px;padding:3px 7px;margin-left:8px;vertical-align:2px;white-space:nowrap}
+.grade-A{color:#1D5C38;border-color:#1D5C38}
+.grade-B{color:#33414E;border-color:#33414E}
+.grade-C{color:#8A6D1B;border-color:#A98548}
+.grade-D{color:#6E7268;border-color:#9A9A8E}
+.src-legend{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px}
+.policy table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;line-height:1.7;margin:10px 0 22px}
+.policy th,.policy td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.policy th{background:var(--paper2);white-space:nowrap}
 .rel{border-top:1px solid var(--line);margin-top:40px;padding-top:28px}
 .rel h2{font-size:21px;margin:0 0 18px}
 .rel-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -202,19 +211,32 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .pager a{font-family:var(--sans);font-size:14.5px;color:var(--ink2);max-width:46%}
 .pager a.next{text-align:right;margin-left:auto}
 .pager .dir{display:block;font-size:12px;color:var(--muted);letter-spacing:.15em;margin-bottom:4px}
-/* dark reading */
-body.dark-read{background:#151613;color:#E9E5D8}
-body.dark-read .site-header{background:rgba(21,22,19,.96);border-color:#2C2C28}
-body.dark-read .brand-name,body.dark-read .main-nav a,body.dark-read .article h1,body.dark-read .article-body h2{color:#E9E5D8}
+/* dark reading: redefine the palette vars so every var()-based color flips at once,
+   then fix the few places that use --green as text on dark. Root cause of the
+   reported bug: .toc a / .sources li / .rel-list h3 a kept light-mode dark ink
+   (#232823 / #3C423B) on a dark background, and the sticky header was
+   rgba(..., .96) so scrolled headings ghosted through it. */
+body.dark-read{--paper:#151613;--paper2:#1D1E1B;--card:#1D1E1B;--ink:#EDE9DB;--ink2:#D8D4C6;--muted:#B3AFA2;--line:#2C2C28;--line2:#3A3A34;--gold:#D8C98A;background:#151613;color:#E9E5D8}
+body.dark-read .site-header{background:#151613;border-color:#2C2C28}
+body.dark-read .brand-name,body.dark-read .main-nav a,body.dark-read .article h1,body.dark-read .article-body h2{color:#EDE9DB}
+body.dark-read a{color:#8FBEA6}
+body.dark-read .sources li a,body.dark-read .main-nav a[aria-current="page"],body.dark-read .art-meta .cat,body.dark-read .cat-card:hover h3,body.dark-read .mobile-nav a:hover{color:#8FBEA6}
 body.dark-read .article .subtitle,body.dark-read .article-body p,body.dark-read .article-body li{color:#D8D4C6}
 body.dark-read .article .byline,body.dark-read .sources,body.dark-read .rel,body.dark-read .pager{border-color:#2C2C28}
 body.dark-read .toc{background:#1D1E1B;border-color:#2C2C28}
 body.dark-read .article-tools button,body.dark-read .article-tools a.toolbtn{background:#1D1E1B;border-color:#3A3A34;color:#D8D4C6}
 body.dark-read .article-body .openq{background:#1D1E1B}
 body.dark-read .article-body .pull p{color:#D8C98A}
-body.dark-read .article figcaption,body.dark-read .article-body figcaption,body.dark-read .crumbs,body.dark-read .crumbs a{color:#9A9A8E}
+body.dark-read .article figcaption,body.dark-read .article-body figcaption,body.dark-read .crumbs,body.dark-read .crumbs a{color:#B3AFA2}
 body.dark-read .site-footer{background:#121310;border-color:#2C2C28}
-body.dark-read .foot-grid a,body.dark-read .foot-brand p{color:#A8A89C}
+body.dark-read .foot-grid a,body.dark-read .foot-brand p{color:#B3AFA2}
+body.dark-read .news-form input,body.dark-read .search-box input{background:#151613;color:#EDE9DB;border-color:#3A3A34}
+body.dark-read .grade-A{color:#8FBEA6;border-color:#8FBEA6}
+body.dark-read .grade-B{color:#A8B8C4;border-color:#A8B8C4}
+body.dark-read .grade-C{color:#D8C98A;border-color:#D8C98A}
+body.dark-read .grade-D{color:#B3AFA2;border-color:#B3AFA2}
+body.dark-read .article .cat-chip{color:#8FBEA6;border-color:#8FBEA6}
+body.dark-read .to-top{background:#1D1E1B;color:#EDE9DB;border-color:#3A3A34}
 /* back to top */
 .to-top{position:fixed;right:18px;bottom:18px;z-index:70;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--card);color:var(--ink);font-size:18px;display:none;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .to-top.show{display:block}
