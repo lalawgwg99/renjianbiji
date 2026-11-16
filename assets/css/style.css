@@ -294,6 +294,12 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .audio-player .ap-fill{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:2px;width:0}
 .audio-player .ap-time{flex:0 0 auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .audio-player .ap-rate{flex:0 0 auto;border:1px solid var(--line2);background:var(--card);color:var(--ink2);border-radius:999px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+.resume-listen{display:flex;align-items:baseline;gap:10px;border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--paper2);border-radius:8px;padding:12px 16px;margin:0 0 8px;text-decoration:none;color:var(--ink)}
+.resume-listen[hidden]{display:none}
+.resume-listen .rl-label{flex:0 0 auto;font-size:12px;letter-spacing:.14em;color:var(--gold);font-weight:600}
+.resume-listen .rl-title{font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resume-listen .rl-time{flex:0 0 auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.series-play{border:1px solid var(--gold);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 18px;font-size:14px;cursor:pointer;font-family:var(--sans);margin-top:6px}
 @media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label,.audio-player .ap-narrator{display:none}.audio-player .ap-track{height:10px}.audio-player .ap-track::before{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}}
 /* resume-reading bar (2.2): hidden until JS finds a saved chapter */
 .resume-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--gold);background:var(--paper2);border-radius:10px;padding:12px 16px;margin:20px 0 4px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
@@ -324,7 +330,7 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .notfound p{color:var(--ink2)}
 /* ---------- print / save as PDF: hide chrome, keep title/body/figures/cross-era/sources, force light ---------- */
 @media print{
-  .site-header,.progress,.progress-label,.audio-player,.article-tools,.resume-bar,.toc,.rel,.pager,.site-footer,.to-top,.mobile-nav,.crumbs,.series-block,.back-link{display:none!important}
+  .site-header,.progress,.progress-label,.audio-player,.resume-listen,.article-tools,.resume-bar,.toc,.rel,.pager,.site-footer,.to-top,.mobile-nav,.crumbs,.series-block,.back-link{display:none!important}
   body{background:#fff!important;color:#000!important}
   :root,body.dark-read,body.warm-paper{--paper:#fff;--paper2:#fff;--card:#fff;--ink:#000;--ink2:#222;--muted:#555;--line:#999;--line2:#888;--gold:#7a5c14;--green:#000}
   body.dark-read a,body.warm-paper a{color:#000}

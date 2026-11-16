@@ -262,13 +262,33 @@
       if (curEl) curEl.textContent = apFmt(c);
       if (track) track.setAttribute('aria-valuenow', String(Math.floor(c)));
     }
+    var lastSave = 0;
+    function apSave(force){
+      try {
+        var now = Date.now();
+        if (!force && now - lastSave < 5000) return;
+        lastSave = now;
+        var h1t = document.querySelector('h1');
+        localStorage.setItem('sf-last-listen', JSON.stringify({ slug: au.getAttribute('data-slug') || '', url: window.location.pathname, title: h1t ? h1t.textContent.trim() : document.title, seconds: Math.floor(au.currentTime) }));
+      } catch (e) {}
+    }
     if (playBtn) playBtn.addEventListener('click', function(){ if (au.paused) { au.play(); } else { au.pause(); } });
     au.addEventListener('play', function(){ if (playBtn) playBtn.textContent = '❚❚'; });
     au.addEventListener('pause', function(){ if (playBtn) playBtn.textContent = '▶'; });
     au.addEventListener('ended', function(){
       if (playBtn) playBtn.textContent = '▶';
       au.currentTime = 0; apSync();
-      var nxt = au.getAttribute('data-next');
+      try { localStorage.removeItem('sf-last-listen'); } catch (e) {}
+      var nxt = null;
+      try {
+        var pl = JSON.parse(localStorage.getItem('sf-playlist') || 'null');
+        if (pl && pl.length) {
+          var idx = pl.indexOf(window.location.pathname);
+          if (idx >= 0 && idx + 1 < pl.length) { nxt = pl[idx + 1]; }
+          else { localStorage.removeItem('sf-playlist'); }
+        }
+      } catch (e) {}
+      if (!nxt) nxt = au.getAttribute('data-next');
       if (nxt) {
         try { sessionStorage.setItem('sf-autoplay', '1'); } catch (e) {}
         window.location.href = nxt;
@@ -292,6 +312,21 @@
       au.playbackRate = RATES[rateIdx];
       rateBtn.textContent = RATES[rateIdx].toFixed(2).replace(/0$/, '') + 'x';
     });
+    au.addEventListener('timeupdate', function(){ apSave(false); });
+    au.addEventListener('pause', function(){ apSave(true); });
+    try {
+      var pl0 = JSON.parse(localStorage.getItem('sf-playlist') || 'null');
+      if (pl0 && pl0.indexOf(window.location.pathname) < 0) localStorage.removeItem('sf-playlist');
+    } catch (e) {}
+    var lm = location.hash.match(/^#listen=(\d+(?:\.\d+)?)$/);
+    if (lm) {
+      var seekTo = parseFloat(lm[1]);
+      var applySeek = function(){
+        var d = au.duration || parseFloat(ap.getAttribute('data-duration')) || 0;
+        if (d > 0) { au.currentTime = Math.max(0, Math.min(d - 1, seekTo)); apSync(); }
+      };
+      if (au.readyState >= 1) applySeek(); else au.addEventListener('loadedmetadata', applySeek, { once: true });
+    }
     if ('mediaSession' in navigator) {
       try {
         var h1 = document.querySelector('h1');
@@ -310,3 +345,39 @@
     } catch (e) {}
     apSync();
   }
+
+  /* resume listening strip (batch 7): home page only; series play button. */
+  (function(){
+    function fmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+    var rl = document.getElementById('resume-listen');
+    if (rl) {
+      try {
+        var data = JSON.parse(localStorage.getItem('sf-last-listen') || 'null');
+        if (data && data.url && data.seconds >= 0) {
+          var title = null;
+          var cands = [data.url, data.url.replace('/articles/', '/en/articles/')];
+          for (var i = 0; i < cands.length; i++) {
+            var a = document.querySelector('a[href="' + cands[i] + '"]');
+            if (a) { title = a.textContent.trim(); break; }
+          }
+          rl.href = data.url + '#listen=' + Math.floor(data.seconds);
+          rl.querySelector('.rl-title').textContent = title || data.title || '';
+          rl.querySelector('.rl-time').textContent = fmt(data.seconds);
+          rl.hidden = false;
+        }
+      } catch (e) {}
+    }
+    var pb = document.querySelector('.series-play');
+    if (pb) {
+      pb.addEventListener('click', function(){
+        try {
+          var list = JSON.parse(pb.getAttribute('data-playlist') || '[]');
+          if (list.length) {
+            localStorage.setItem('sf-playlist', JSON.stringify(list));
+            try { sessionStorage.setItem('sf-autoplay', '1'); } catch (e) {}
+            window.location.href = list[0];
+          }
+        } catch (e) {}
+      });
+    }
+  })();
