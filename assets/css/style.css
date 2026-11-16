@@ -52,15 +52,14 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 /* ---------- hero ---------- */
 .hero{background:var(--paper);color:var(--ink);border:1px solid var(--line2);border-radius:14px;padding:56px 48px 52px;margin:28px 0 8px}
 @media(max-width:640px){.hero{padding:40px 24px 36px;margin-top:20px;border-radius:10px}}
-.hero .eyebrow{color:var(--gold-soft)}
-.hero .rule-gold{width:44px;height:2px;background:var(--gold);margin:18px 0 0}
-.hero h1{font-size:52px;margin:14px 0 6px;letter-spacing:.1em;line-height:1.15}
-@media(max-width:640px){.hero h1{font-size:38px}}
-.hero .slogan{font-size:24px;margin:0 0 14px;color:var(--ink)}
-@media(max-width:640px){.hero .slogan{font-size:20px}}
-.hero p.intro{font-size:17px;line-height:1.8;color:var(--ink2);margin:0 0 26px;max-width:560px}
-.hero-btn{display:inline-block;background:var(--green);color:#FDFCF8;font-family:var(--sans);font-size:16px;font-weight:700;padding:13px 24px;border-radius:8px}
-.hero-btn:hover{background:#33332E;text-decoration:none}
+/* ---------- homepage manifesto (was hero card; 2026-11-16 slimmed: no frame, no repeated brand, slogan is h1) ---------- */
+.manifesto{padding:30px 0 10px;margin:12px 0 0}
+@media(max-width:640px){.manifesto{padding:22px 0 6px;margin-top:6px}}
+.manifesto .rule-gold{width:44px;height:2px;background:var(--gold);margin:0 0 16px}
+.manifesto h1{font-size:30px;margin:0 0 10px;line-height:1.45;letter-spacing:0}
+@media(max-width:640px){.manifesto h1{font-size:26px}}
+.manifesto p.intro{font-size:17px;line-height:1.8;color:var(--ink2);margin:0;max-width:560px}
+.section-head .eyebrow{margin:0}
 /* ---------- sections ---------- */
 .section{padding:44px 0 8px}
 .section-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:24px}
@@ -240,7 +239,7 @@ body.dark-read .grade-C{color:#D8C98A;border-color:#D8C98A}
 body.dark-read .grade-D{color:#B3AFA2;border-color:#B3AFA2}
 body.dark-read .article .cat-chip{color:#8FBEA6;border-color:#8FBEA6}
 body.dark-read .to-top{background:#1D1E1B;color:#EDE9DB;border-color:#3A3A34}
-body.dark-read .hero-btn,body.dark-read .news-form button,body.dark-read .search-box button,body.dark-read .resume-bar .resume-go{background:#EDE9DB;color:#151613;border-color:#EDE9DB}
+body.dark-read .news-form button,body.dark-read .search-box button,body.dark-read .resume-bar .resume-go{background:#EDE9DB;color:#151613;border-color:#EDE9DB}
 body.dark-read .brand-seal{background:#EDE9DB;color:#151613}
 body.dark-read .article-tools button[aria-pressed="true"]{background:#D8C98A;color:#151613;border-color:#D8C98A}
 /* warm paper reading: third reading tone (2.2). Same var mechanism as dark-read;
