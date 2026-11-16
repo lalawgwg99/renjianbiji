@@ -544,5 +544,61 @@
   "date": "2026-11-16",
   "url": "/articles/bitcoin-whitepaper/",
   "url_en": "/en/articles/bitcoin-whitepaper/"
+ },
+ {
+  "title": "2008：次貸風暴如何席捲全世界",
+  "title_en": "2008: How the Subprime Crisis Swept the World",
+  "tags": "",
+  "subtitle": "一場從美國郊區客廳開始的風暴，如何穿過華爾街的電腦，最後淹沒全世界。",
+  "subtitle_en": "A storm that began in American living rooms travelled through Wall Street's computers and ended up flooding the whole world.",
+  "excerpt": "2009 年，加州聖地牙哥的一棟平房門前立著一塊牌子，上面寫著「銀行法拍」，下面是一家仲介的名字和一支電話。屋裡沒有人了，草坪枯黃，窗簾拉著，信箱裡塞滿沒人收的信。幾年前，這棟房子還是一個家庭的全部——貸款、裝修、孩子的房間、週末的烤肉。現在，它成了一件「銀行資產」，編號寫在某份……",
+  "excerpt_en": "One day in 2009, a sign went up in front of a plain house in San Diego, California. \"BANK FORECLOSURE,\" it read, with the name of a real est…",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/crash2008/",
+  "url_en": "/en/articles/crash2008/"
+ },
+ {
+  "title": "柏格：沒人要的指數基金，如何變成全民預設",
+  "title_en": "John Bogle and the Index Fund Nobody Wanted",
+  "tags": "",
+  "subtitle": "1976 年 8 月 31 日，一支只募到 1130 萬美元的基金，被華爾街罵成「柏格的愚行」；五十年後，它成了全世界散戶的預設選項。",
+  "subtitle_en": "On 31 August 1976, a fund that raised only $11.3 million was mocked as \"Bogle's Folly\"; fifty years later, it has become the default choice of ordinary investors everywhere.",
+  "excerpt": "1976 年 8 月 31 日，星期二，紐約。先鋒集團的第一支指數基金完成首次公開發行。承銷商設定的目標是 1.5 億美元，結果只募到 1130 萬美元，短少了 93%。[1][3]承銷商跑來找約翰·柏格，建議乾脆取消這筆交易，把錢退還給投資人，假裝什麼事都沒發生過。柏格只回了一……",
+  "excerpt_en": "On Tuesday, 31 August 1976, in New York, the Vanguard Group's first index fund completed its initial public offering. The underwriters had s…",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/bogle-index-fund/",
+  "url_en": "/en/articles/bogle-index-fund/"
+ },
+ {
+  "title": "台灣經濟奇蹟：從加工出口區到十大建設",
+  "title_en": "The Taiwan Miracle: From Export Zones to the Ten Major Projects",
+  "tags": "",
+  "subtitle": "1966 年，一片高雄港邊的沙灘圍起了全世界第一個加工出口區；20 年後，一座沒有資源的島，靠著出口與建設，把人均所得翻了 15 倍。",
+  "subtitle_en": "In 1966, a strip of reclaimed sand beside Kaohsiung Harbor became the world's first export processing zone; twenty years later, an island with almost no natural resources had multiplied its income per person fifteenfold.",
+  "excerpt": "1966 年 12 月 3 日，星期六。高雄港邊的中島新生地，一片剛從海裡填出來、還帶著鹹味的沙灘上，圍起了一道籬笆。行政院長嚴家淦站在籬笆前，主持一座工業區的開幕。沒有人知道，這道籬笆圍住的 68.36 公頃土地，會成為全世界第一個加工出口區。[2][4]",
+  "excerpt_en": "On Saturday, 3 December 1966, on a patch of newly reclaimed land beside Kaohsiung Harbor — sand still smelling of the sea — a fence went up.…",
+  "cat": "台灣",
+  "cat_en": "Taiwan",
+  "date": "2026-11-17",
+  "url": "/articles/taiwan-miracle/",
+  "url_en": "/en/articles/taiwan-miracle/"
+ },
+ {
+  "title": "黑色星期一：道瓊單日暴跌 22.6% 的那天",
+  "title_en": "Black Monday 1987: The Day the Market Fell 22.6%",
+  "tags": "",
+  "subtitle": "1987 年 10 月 19 日，沒有戰爭，沒有政變，沒有一家大公司倒閉。道瓊指數卻在一天之內跌掉 22.6%。市場不是被消息打倒的，是被自己踩倒的。",
+  "subtitle_en": "On 19 October 1987 there was no war, no coup, no great company going under. Yet the Dow Jones lost 22.6% in a single day. The market was not struck down by the news. It trampled itself.",
+  "excerpt": "1987 年 10 月 19 日，星期一。紐約證券交易所收盤的時候，道瓊工業指數停在 1,738.74 點，比上個星期五跌了 508 點，跌幅 22.6%。這是道瓊指數有史以來最大的單日跌幅，比 1929 年股災裡任何一天都慘。[1][10]",
+  "excerpt_en": "Monday, 19 October 1987. When the New York Stock Exchange closed, the Dow Jones Industrial Average stood at 1,738.74 — down 508 points from …",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/black-monday-1987/",
+  "url_en": "/en/articles/black-monday-1987/"
  }
 ]
