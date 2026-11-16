@@ -108,6 +108,9 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .tl-list h3 a{color:var(--ink)}
 .tl-list p{margin:0;font-size:13.5px;color:var(--muted);font-family:var(--sans)}
 .tl-note{font-size:15px;color:var(--ink2);max-width:640px}
+.tl-jumps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.tl-jumps a{font-family:var(--sans);font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none}
+.tl-jumps a:hover{border-color:var(--gold);color:var(--gold)}
 /* series */
 .series-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:760px){.series-grid{grid-template-columns:1fr}}
