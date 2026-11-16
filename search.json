@@ -362,5 +362,19 @@
   "date": "2026-11-16",
   "url": "/articles/zheng-chenggong/",
   "url_en": "/en/articles/zheng-chenggong/"
+ },
+ {
+  "title": "台積電：晶圓代工如何誕生",
+  "title_en": "TSMC: How the Foundry Model Was Born",
+  "tags": "",
+  "subtitle": "一家不設計晶片的公司，如何成為全世界最重要的一家公司",
+  "subtitle_en": "A company that designs no chips became the most important company in the world",
+  "excerpt": "你正在用的手機、你家裡的電視、馬路上的汽車——它們的心臟都來自同一種東西：一片比指甲還小的晶片。而全世界最先進的晶片，產能幾乎全集中在一座島上，集中在一家公司手裡。這家公司不設計任何晶片，它只替別人製造。這是一個關於分工的故事，也是一個關於一座島如何發明了一種生意的故事。",
+  "excerpt_en": "The phone in your hand, the television in your living room, the car on the road — their hearts all come from the same thing: a chip smaller …",
+  "cat": "台灣",
+  "cat_en": "Taiwan",
+  "date": "2026-11-16",
+  "url": "/articles/taiwan-semiconductor/",
+  "url_en": "/en/articles/taiwan-semiconductor/"
  }
 ]
