@@ -53,9 +53,9 @@
   var modeBtn = document.getElementById('dark-toggle');
   var MODES = ['day', 'warm', 'dark'];
   var MODE_LABEL = {
-    day: {zh: '☀ 白晝', en: 'Day'},
-    warm: {zh: '◑ 暖紙', en: 'Warm paper'},
-    dark: {zh: '◐ 夜讀', en: 'Dark'}
+    day: {zh: '☀', en: '☀'},
+    warm: {zh: '◑', en: '◑'},
+    dark: {zh: '◐', en: '◐'}
   };
   var pageLang = document.documentElement.lang === 'en' ? 'en' : 'zh';
   var mode = 'day';
