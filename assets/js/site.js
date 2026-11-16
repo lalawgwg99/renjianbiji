@@ -381,3 +381,134 @@
       });
     }
   })();
+
+  /* quote card (batch 8): select text in .article-body -> floating button ->
+     canvas card (paper style, quote + title + SlowFolio mark), download/share. */
+  (function(){
+    var body = document.querySelector('.article-body');
+    if (!body) return;
+    var zh = document.documentElement.lang.indexOf('zh') === 0;
+    var T = {
+      make: zh ? '製成圖卡' : 'Make a card',
+      download: zh ? '下載圖片' : 'Download image',
+      share: zh ? '分享' : 'Share',
+      close: zh ? '關閉' : 'Close',
+      mark: zh ? 'SlowFolio 人間手札' : 'Slowfolio',
+      title: zh ? '書摘圖卡' : 'Quote Card'
+    };
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'quote-btn';
+    btn.textContent = T.make;
+    btn.hidden = true;
+    document.body.appendChild(btn);
+    var currentQuote = '';
+    function hideBtn(){ btn.hidden = true; }
+    function onSel(){
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed) { hideBtn(); return; }
+      var text = sel.toString().replace(/\s+/g, ' ').trim();
+      if (text.length < 10) { hideBtn(); return; }
+      var node = sel.anchorNode;
+      if (!node || !body.contains(node.nodeType === 1 ? node : node.parentNode)) { hideBtn(); return; }
+      currentQuote = text;
+      try {
+        var r = sel.getRangeAt(0).getBoundingClientRect();
+        var x = Math.max(8, Math.min(window.innerWidth - 140, r.left + window.scrollX + r.width / 2 - 60));
+        var y = r.bottom + window.scrollY + 10;
+        btn.style.left = x + 'px';
+        btn.style.top = y + 'px';
+      } catch (e) {}
+      btn.hidden = false;
+    }
+    document.addEventListener('mouseup', function(){ setTimeout(onSel, 10); });
+    document.addEventListener('touchend', function(){ setTimeout(onSel, 10); });
+    document.addEventListener('selectionchange', function(){
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed) hideBtn();
+    });
+    var overlay = document.createElement('div');
+    overlay.className = 'quote-modal';
+    overlay.hidden = true;
+    overlay.innerHTML = '<div class="quote-card-box" role="dialog" aria-label="' + T.title + '">' +
+      '<canvas class="quote-canvas" width="1080" height="1350"></canvas>' +
+      '<div class="quote-actions">' +
+      '<button type="button" class="quote-download">' + T.download + '</button>' +
+      '<button type="button" class="quote-share">' + T.share + '</button>' +
+      '<button type="button" class="quote-close">' + T.close + '</button>' +
+      '</div></div>';
+    document.body.appendChild(overlay);
+    var canvas = overlay.querySelector('.quote-canvas');
+    function wrapText(ctx, text, maxW){
+      var lines = [], cur = '';
+      var chars = text.split('');
+      for (var i = 0; i < chars.length; i++) {
+        var test = cur + chars[i];
+        if (ctx.measureText(test).width > maxW && cur) { lines.push(cur); cur = chars[i]; }
+        else cur = test;
+      }
+      if (cur) lines.push(cur);
+      return lines;
+    }
+    function drawCard(quote){
+      var ctx = canvas.getContext('2d');
+      var W = 1080, H = 1350;
+      ctx.fillStyle = '#FDFCF8'; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = '#B89B5E'; ctx.lineWidth = 3;
+      ctx.strokeRect(48, 48, W - 96, H - 96);
+      ctx.fillStyle = '#1B1B18'; ctx.fillRect(90, 90, 72, 72);
+      ctx.fillStyle = '#FDFCF8'; ctx.font = '700 44px Georgia, serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('S', 126, 128);
+      ctx.fillStyle = '#8A8578'; ctx.font = '24px Georgia, "Songti TC", "Noto Serif TC", serif';
+      ctx.textAlign = 'left'; ctx.fillText(T.mark, 182, 128);
+      ctx.fillStyle = '#B89B5E'; ctx.fillRect(90, 200, 120, 4);
+      var title = (document.querySelector('h1') || {}).textContent || '';
+      ctx.fillStyle = '#1B1B18';
+      ctx.font = '44px Georgia, "Songti TC", "Noto Serif TC", serif';
+      ctx.textBaseline = 'top';
+      var lines = wrapText(ctx, '「' + quote + '」', W - 180);
+      if (lines.length > 12) { lines = lines.slice(0, 12); lines[11] += '…'; }
+      var lineH = 72, startY = 330;
+      for (var i = 0; i < lines.length; i++) ctx.fillText(lines[i], 90, startY + i * lineH);
+      var ty = H - 220;
+      ctx.fillStyle = '#B89B5E'; ctx.fillRect(90, ty - 24, 120, 4);
+      ctx.fillStyle = '#1B1B18'; ctx.font = '34px Georgia, "Songti TC", "Noto Serif TC", serif';
+      var tlines = wrapText(ctx, title, W - 180);
+      if (tlines.length > 2) tlines = tlines.slice(0, 2);
+      for (var j = 0; j < tlines.length; j++) ctx.fillText(tlines[j], 90, ty + j * 52);
+      ctx.fillStyle = '#8A8578'; ctx.font = '24px Georgia, serif';
+      ctx.fillText('slowfolio.app', 90, H - 110);
+    }
+    function cardBlob(cb){ canvas.toBlob(cb, 'image/png'); }
+    function downloadBlob(blob){
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'slowfolio-card.png';
+      a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 5000);
+    }
+    overlay.querySelector('.quote-download').addEventListener('click', function(){
+      cardBlob(function(blob){ if (blob) downloadBlob(blob); });
+    });
+    overlay.querySelector('.quote-share').addEventListener('click', function(){
+      cardBlob(function(blob){
+        if (!blob) return;
+        var file = new File([blob], 'slowfolio-card.png', { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], title: document.title }).catch(function(){});
+        } else {
+          downloadBlob(blob);
+        }
+      });
+    });
+    overlay.querySelector('.quote-close').addEventListener('click', function(){ overlay.hidden = true; });
+    overlay.addEventListener('click', function(ev){ if (ev.target === overlay) overlay.hidden = true; });
+    btn.addEventListener('click', function(){
+      if (!currentQuote) return;
+      drawCard(currentQuote);
+      overlay.hidden = false;
+      hideBtn();
+      try { window.getSelection().removeAllRanges(); } catch (e) {}
+    });
+  })();
