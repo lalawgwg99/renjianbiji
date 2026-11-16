@@ -47,16 +47,90 @@
   var fsDown = document.getElementById('font-down'), fsUp = document.getElementById('font-up');
   if (fsDown) fsDown.addEventListener('click', function(){ setSize(cur - 1); });
   if (fsUp) fsUp.addEventListener('click', function(){ setSize(cur + 1); });
-  /* dark reading mode */
-  var darkBtn = document.getElementById('dark-toggle');
-  var dark = null;
-  try { dark = localStorage.getItem('rjb-dark'); } catch(e){}
-  if (dark === '1') { document.body.classList.add('dark-read'); if (darkBtn) darkBtn.setAttribute('aria-pressed','true'); }
-  if (darkBtn) darkBtn.addEventListener('click', function(){
-    var on = document.body.classList.toggle('dark-read');
-    darkBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    try { localStorage.setItem('rjb-dark', on ? '1' : '0'); } catch(e){}
+  /* reading tone (2.2): day / warm paper / dark — three-state cycle on one button.
+     Old 'rjb-dark' pref migrates to the new 'rjb-mode' key. Classes stay mutually
+     exclusive, so the dark-read var redefinition is never overridden by warm paper. */
+  var modeBtn = document.getElementById('dark-toggle');
+  var MODES = ['day', 'warm', 'dark'];
+  var MODE_LABEL = {
+    day: {zh: '☀ 白晝', en: 'Day'},
+    warm: {zh: '◑ 暖紙', en: 'Warm paper'},
+    dark: {zh: '◐ 夜讀', en: 'Dark'}
+  };
+  var pageLang = document.documentElement.lang === 'en' ? 'en' : 'zh';
+  var mode = 'day';
+  try {
+    mode = localStorage.getItem('rjb-mode') || 'day';
+    if (mode === 'day' && localStorage.getItem('rjb-dark') === '1') mode = 'dark';
+  } catch(e){}
+  if (MODES.indexOf(mode) < 0) mode = 'day';
+  function applyMode(m){
+    document.body.classList.toggle('warm-paper', m === 'warm');
+    document.body.classList.toggle('dark-read', m === 'dark');
+    if (modeBtn) modeBtn.textContent = MODE_LABEL[m][pageLang];
+    try { localStorage.setItem('rjb-mode', m); } catch(e){}
+  }
+  applyMode(mode);
+  if (modeBtn) modeBtn.addEventListener('click', function(){
+    mode = MODES[(MODES.indexOf(mode) + 1) % MODES.length];
+    applyMode(mode);
   });
+  /* resume reading (2.2): remember the chapter in progress; offer to jump back */
+  var resumeBar = document.getElementById('resume-bar');
+  var artBody = document.querySelector('.article-body');
+  var bmForSlug = document.getElementById('bookmark');
+  var progSlug = bmForSlug ? bmForSlug.getAttribute('data-slug') : null;
+  if (artBody && progSlug) {
+    var progKey = 'rjb-progress-' + progSlug;
+    var heads = Array.prototype.slice.call(artBody.querySelectorAll('h2[id]'));
+    function currentChapter(){
+      var y = window.scrollY + 140, cur = heads[0] || null;
+      heads.forEach(function(h){ if (h.getBoundingClientRect().top + window.scrollY <= y) cur = h; });
+      return cur;
+    }
+    function chapterLabel(h){
+      if (!h) return '';
+      var chno = h.querySelector('.chno');
+      var num = chno ? chno.textContent.trim() : '';
+      var title = h.textContent.replace(num, '').trim();
+      if (!num) return title;
+      return pageLang === 'en' ? num + ': ' + title : '〈' + num + '：' + title + '〉';
+    }
+    function saveProgress(){
+      var h = currentChapter();
+      if (!h) return;
+      try { localStorage.setItem(progKey, JSON.stringify({id: h.id, label: chapterLabel(h), y: Math.round(window.scrollY), at: Date.now()})); } catch(e){}
+    }
+    var saveTimer = null;
+    window.addEventListener('scroll', function(){
+      if (saveTimer) return;
+      saveTimer = setTimeout(function(){ saveTimer = null; saveProgress(); }, 1500);
+    }, {passive:true});
+    window.addEventListener('beforeunload', saveProgress);
+    if (resumeBar) {
+      var saved = null;
+      try { saved = JSON.parse(localStorage.getItem(progKey) || 'null'); } catch(e){}
+      var firstId = heads.length ? heads[0].id : null;
+      var fresh = saved && (Date.now() - (saved.at || 0) < 30 * 24 * 3600 * 1000);
+      if (fresh && saved.id && saved.id !== firstId && saved.y > 400) {
+        var target = document.getElementById(saved.id);
+        if (target) {
+          var msg = resumeBar.querySelector('.resume-msg');
+          if (msg) msg.textContent = (pageLang === 'en'
+            ? 'Last time you reached ' + saved.label + ' — tap to jump back'
+            : '上次讀到' + saved.label + '，點擊跳轉');
+          resumeBar.hidden = false;
+          var go = resumeBar.querySelector('.resume-go');
+          if (go) go.addEventListener('click', function(){
+            target.scrollIntoView({behavior:'smooth', block:'start'});
+            resumeBar.hidden = true;
+          });
+          var dis = resumeBar.querySelector('.resume-dismiss');
+          if (dis) dis.addEventListener('click', function(){ resumeBar.hidden = true; });
+        }
+      }
+    }
+  }
   /* bookmark */
   var bm = document.getElementById('bookmark');
   if (bm) {

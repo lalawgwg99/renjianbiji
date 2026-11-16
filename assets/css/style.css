@@ -237,6 +237,30 @@ body.dark-read .grade-C{color:#D8C98A;border-color:#D8C98A}
 body.dark-read .grade-D{color:#B3AFA2;border-color:#B3AFA2}
 body.dark-read .article .cat-chip{color:#8FBEA6;border-color:#8FBEA6}
 body.dark-read .to-top{background:#1D1E1B;color:#EDE9DB;border-color:#3A3A34}
+/* warm paper reading: third reading tone (2.2). Same var mechanism as dark-read;
+   classes are mutually exclusive (JS toggles one at a time), so dark-read is untouched. */
+body.warm-paper{--paper:#F5EDDA;--paper2:#EFE5CB;--card:#FCF7E9;--ink:#2E2A1D;--ink2:#453F2E;--muted:#7C7460;--line:#E3D8B8;--line2:#D2C4A0;--gold:#9A7A38;background:#F5EDDA;color:#2E2A1D}
+body.warm-paper .site-header{background:#F5EDDA;border-color:#E3D8B8}
+body.warm-paper .site-footer{background:#EFE5CB;border-color:#E3D8B8}
+body.warm-paper .toc{background:#FCF7E9;border-color:#E3D8B8}
+body.warm-paper .article-body .openq{background:#EFE5CB}
+body.warm-paper .article-body .pull p{color:#6B5A2E}
+body.warm-paper .article-tools button,body.warm-paper .article-tools a.toolbtn{background:#FCF7E9;border-color:#D2C4A0}
+body.warm-paper .news-form input,body.warm-paper .search-box input{background:#FCF7E9;border-color:#D2C4A0}
+body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
+/* cross-era card (2.2): minimal, sits between hero image and TOC */
+.cross-era{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;background:var(--paper2);padding:16px 20px;margin:24px 0}
+.cross-era h2{font-family:var(--sans);font-size:13px;letter-spacing:.25em;color:var(--muted);margin:0 0 8px;text-transform:uppercase}
+.cross-era h2 .anchor{color:var(--gold);letter-spacing:.08em}
+.cross-era ul{margin:0;padding:0;list-style:none}
+.cross-era li{display:flex;gap:12px;padding:7px 0;font-size:15.5px;line-height:1.7;color:var(--ink2)}
+.cross-era li+li{border-top:1px dashed var(--line2)}
+.cross-era .yr{flex:0 0 auto;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--gold);padding-top:2px;white-space:nowrap}
+/* resume-reading bar (2.2): hidden until JS finds a saved chapter */
+.resume-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--gold);background:var(--paper2);border-radius:10px;padding:12px 16px;margin:20px 0 4px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
+.resume-bar[hidden]{display:none}
+.resume-bar .resume-go{margin-left:auto;flex:0 0 auto;background:var(--green);color:#F2ECDA;border:0;border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:700}
+.resume-bar .resume-dismiss{flex:0 0 auto;background:none;border:0;color:var(--muted);font-size:19px;line-height:1;padding:4px 8px}
 /* back to top */
 .to-top{position:fixed;right:18px;bottom:18px;z-index:70;width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--card);color:var(--ink);font-size:18px;display:none;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .to-top.show{display:block}
