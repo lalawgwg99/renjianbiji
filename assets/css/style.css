@@ -46,6 +46,7 @@ h1,h2,h3{font-weight:700;line-height:1.35}
   .mobile-nav.open{display:block}
   .mobile-nav a{display:block;font-family:var(--sans);font-size:16px;padding:11px 4px;border-bottom:1px solid var(--line);color:var(--ink)}
   .mobile-nav a:last-child{border-bottom:0}
+  .mobile-nav a.nav-lang{display:inline-flex;margin:12px 0 4px;padding:7px 16px;border:1px solid var(--line2);border-radius:999px}
   .mobile-nav a:hover{text-decoration:none;color:var(--green)}
 }
 @media(min-width:901px){.mobile-nav{display:none!important}}
