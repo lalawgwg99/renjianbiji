@@ -656,5 +656,61 @@
   "date": "2026-11-17",
   "url": "/articles/japan-bubble-1989/",
   "url_en": "/en/articles/japan-bubble-1989/"
+ },
+ {
+  "title": "馬丁·路德·金恩：我有一個夢想",
+  "title_en": "Martin Luther King Jr.: I Have a Dream",
+  "tags": "",
+  "subtitle": "1963 年 8 月 28 日，25 萬人站在林肯紀念堂前，聽一個 34 歲的牧師把講稿推到一邊——然後，夢想變成了法律。",
+  "subtitle_en": "On August 28, 1963, 250,000 people stood before the Lincoln Memorial and watched a 34-year-old preacher push his text aside — and then a dream became law.",
+  "excerpt": "1963 年 8 月 28 日，星期三，下午 3 點。華盛頓的夏天熱得發悶，林肯紀念堂的台階上站著一個 34 歲的浸信會牧師，他的面前是 25 萬人——比主辦單位預期的 10 萬人多出 1 倍半——從紀念堂一路鋪到倒影池，再鋪到華盛頓紀念碑。[1]",
+  "excerpt_en": "Wednesday, August 28, 1963, 3 p.m. The Washington summer hung hot and heavy, and on the steps of the Lincoln Memorial stood a 34-year-old Ba…",
+  "cat": "人與社會",
+  "cat_en": "People & Society",
+  "date": "2026-11-17",
+  "url": "/articles/martin-luther-king/",
+  "url_en": "/en/articles/martin-luther-king/"
+ },
+ {
+  "title": "門頭溝：弄丟 85 萬顆比特幣的交易所",
+  "title_en": "Mt. Gox: The Exchange That Lost 850,000 Bitcoins",
+  "tags": "",
+  "subtitle": "去中心化的貨幣，死在中心化的交易所手裡——85 萬顆比特幣失蹤的 10 年",
+  "subtitle_en": "A decentralized currency died in a centralized exchange — the ten-year story of 850,000 missing bitcoins",
+  "excerpt": "2014 年 2 月 24 日深夜，全球最大的比特幣交易所門頭溝的網站，突然變成一片空白。",
+  "excerpt_en": "Late on the night of February 24, 2014, the website of Mt. Gox, the world's largest bitcoin exchange, suddenly went blank.",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/mt-gox-2014/",
+  "url_en": "/en/articles/mt-gox-2014/"
+ },
+ {
+  "title": "夜市：一個島的庶民經濟學",
+  "title_en": "Night Markets: The People's Economics of an Island",
+  "tags": "",
+  "subtitle": "一盞燈、一輛推車、一條街——台灣人如何用夜晚養活一座島",
+  "subtitle_en": "One lamp, one pushcart, one street — how the people of Taiwan learned to feed an island after dark",
+  "excerpt": "傍晚六點，台灣的城市換了一張臉。白天的店面拉下鐵門，另一種經濟才正要開張。一盞燈亮起，一輛推車推出來，一條街就活了。",
+  "excerpt_en": "At six in the evening, Taiwan's cities change their face. The daytime shops pull down their shutters, and another economy is just opening. O…",
+  "cat": "台灣",
+  "cat_en": "Taiwan",
+  "date": "2026-11-17",
+  "url": "/articles/taiwan-night-market/",
+  "url_en": "/en/articles/taiwan-night-market/"
+ },
+ {
+  "title": "以太坊：從數位黃金到世界電腦",
+  "title_en": "Ethereum: From Digital Gold to the World Computer",
+  "tags": "",
+  "subtitle": "一個 19 歲的少年寫下白皮書，把比特幣的「數位黃金」變成一台沒有人擁有、卻人人都能用的世界電腦。",
+  "subtitle_en": "A 19-year-old wrote a white paper and turned Bitcoin's “digital gold” into a world computer that nobody owns and anyone can use.",
+  "excerpt": "2015 年 7 月 30 日，星期四。以太坊的創世區塊被挖了出來。那一刻沒有剪綵，沒有掌聲，也沒有人按下什麼巨大的開關。只有一行程式碼，開始在散落全球的電腦上同步運轉。",
+  "excerpt_en": "Thursday, July 30, 2015. Ethereum's genesis block was mined. There was no ribbon cutting, no applause, nobody pressing a giant switch. Only …",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/ethereum-2015/",
+  "url_en": "/en/articles/ethereum-2015/"
  }
 ]
