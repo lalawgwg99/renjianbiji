@@ -240,3 +240,48 @@
 
   var toc = document.querySelector('.toc');
   if (toc && window.innerWidth >= 1100) toc.setAttribute('open', '');
+
+  /* audio player (2.3): zh article pages only. Play/pause, click-to-seek
+     track, speed cycle 1.0 -> 1.25 -> 1.5, time display, reset on end. */
+  var ap = document.querySelector('.audio-player');
+  if (ap) {
+    var au = ap.querySelector('audio');
+    var playBtn = ap.querySelector('.ap-play');
+    var track = ap.querySelector('.ap-track');
+    var fill = ap.querySelector('.ap-fill');
+    var curEl = ap.querySelector('.ap-cur');
+    var rateBtn = ap.querySelector('.ap-rate');
+    var RATES = [1, 1.25, 1.5];
+    var rateIdx = 0;
+    function apFmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+    function apSync(){
+      var d = au.duration || parseFloat(ap.getAttribute('data-duration')) || 0;
+      var c = au.currentTime || 0;
+      if (fill) fill.style.width = (d > 0 ? (c / d) * 100 : 0) + '%';
+      if (curEl) curEl.textContent = apFmt(c);
+      if (track) track.setAttribute('aria-valuenow', String(Math.floor(c)));
+    }
+    if (playBtn) playBtn.addEventListener('click', function(){ if (au.paused) { au.play(); } else { au.pause(); } });
+    au.addEventListener('play', function(){ if (playBtn) playBtn.textContent = '❚❚'; });
+    au.addEventListener('pause', function(){ if (playBtn) playBtn.textContent = '▶'; });
+    au.addEventListener('ended', function(){ if (playBtn) playBtn.textContent = '▶'; au.currentTime = 0; apSync(); });
+    au.addEventListener('timeupdate', apSync);
+    au.addEventListener('loadedmetadata', apSync);
+    if (track) track.addEventListener('click', function(ev){
+      var r = track.getBoundingClientRect();
+      var d = au.duration || parseFloat(ap.getAttribute('data-duration')) || 0;
+      if (d > 0) au.currentTime = Math.max(0, Math.min(1, (ev.clientX - r.left) / r.width)) * d;
+      apSync();
+    });
+    if (track) track.addEventListener('keydown', function(ev){
+      var d = au.duration || 0;
+      if (ev.key === 'ArrowRight') { au.currentTime = Math.min(d, au.currentTime + 10); apSync(); ev.preventDefault(); }
+      if (ev.key === 'ArrowLeft') { au.currentTime = Math.max(0, au.currentTime - 10); apSync(); ev.preventDefault(); }
+    });
+    if (rateBtn) rateBtn.addEventListener('click', function(){
+      rateIdx = (rateIdx + 1) % RATES.length;
+      au.playbackRate = RATES[rateIdx];
+      rateBtn.textContent = RATES[rateIdx].toFixed(2).replace(/0$/, '') + 'x';
+    });
+    apSync();
+  }

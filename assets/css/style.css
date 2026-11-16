@@ -277,6 +277,15 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .cross-era li{display:flex;gap:12px;padding:7px 0;font-size:15.5px;line-height:1.7;color:var(--ink2)}
 .cross-era li+li{border-top:1px dashed var(--line2)}
 .cross-era .yr{flex:0 0 auto;font-family:var(--sans);font-size:13px;font-weight:700;color:var(--gold);padding-top:2px;white-space:nowrap}
+/* audio player (2.3): thin bar under hero, zh pages only; same minimal style */
+.audio-player{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:10px;background:var(--paper2);padding:12px 16px;margin:24px 0;font-family:var(--sans)}
+.audio-player .ap-play{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:var(--card);color:var(--ink);font-size:15px;line-height:1;cursor:pointer}
+.audio-player .ap-label{flex:0 0 auto;font-size:13.5px;letter-spacing:.12em;color:var(--muted)}
+.audio-player .ap-track{flex:1;height:3px;background:var(--line2);border-radius:2px;cursor:pointer;position:relative}
+.audio-player .ap-fill{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:2px;width:0}
+.audio-player .ap-time{flex:0 0 auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.audio-player .ap-rate{flex:0 0 auto;border:1px solid var(--line2);background:var(--card);color:var(--ink2);border-radius:999px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+@media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label{display:none}}
 /* resume-reading bar (2.2): hidden until JS finds a saved chapter */
 .resume-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--gold);background:var(--paper2);border-radius:10px;padding:12px 16px;margin:20px 0 4px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
 .resume-bar[hidden]{display:none}
@@ -306,7 +315,7 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .notfound p{color:var(--ink2)}
 /* ---------- print / save as PDF: hide chrome, keep title/body/figures/cross-era/sources, force light ---------- */
 @media print{
-  .site-header,.progress,.progress-label,.article-tools,.resume-bar,.toc,.rel,.pager,.site-footer,.to-top,.mobile-nav,.crumbs,.series-block,.back-link{display:none!important}
+  .site-header,.progress,.progress-label,.audio-player,.article-tools,.resume-bar,.toc,.rel,.pager,.site-footer,.to-top,.mobile-nav,.crumbs,.series-block,.back-link{display:none!important}
   body{background:#fff!important;color:#000!important}
   :root,body.dark-read,body.warm-paper{--paper:#fff;--paper2:#fff;--card:#fff;--ink:#000;--ink2:#222;--muted:#555;--line:#999;--line2:#888;--gold:#7a5c14;--green:#000}
   body.dark-read a,body.warm-paper a{color:#000}
