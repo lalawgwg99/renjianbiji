@@ -30,6 +30,60 @@
     var max = h.scrollHeight - h.clientHeight;
     if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
     if (topBtn) topBtn.classList.toggle('show', h.scrollTop > 600);
+    updateProgLabel();
+  }
+  /* progress label: current chapter + minutes left. Chapters are the h2[id] inside
+     .article-body; prologue/epilogue by id suffix (-pro / -epi / -end) or chno text,
+     numbered chapters count in DOM order (ids vary: 'zh-1' vs '<slug>-zh-1'). */
+  var progLabel = document.getElementById('progress-label');
+  var progLang = document.documentElement.lang === 'en' ? 'en' : 'zh';
+  var progMin = progLabel ? parseInt(progLabel.getAttribute('data-minutes'), 10) || 0 : 0;
+  var progHeads = [];
+  var progBody = document.querySelector('.article-body');
+  if (progBody) progHeads = Array.prototype.slice.call(progBody.querySelectorAll('h2[id]'));
+  var progNums = [];
+  (function(){
+    var c = 0;
+    progHeads.forEach(function(h){
+      var chno = h.querySelector('.chno');
+      var num = chno ? chno.textContent.trim() : '';
+      var id = h.id || '';
+      var kind = (/-pro$/.test(id) || num === '序章' || num === 'PROLOGUE') ? 'pro'
+        : ((/-epi$/.test(id) || /-end$/.test(id) || num === '終章' || num === 'EPILOGUE') ? 'end' : 'num');
+      if (kind === 'num') c += 1;
+      progNums.push({kind:kind, n:c, title:h.textContent.replace(num, '').trim()});
+    });
+  })();
+  function progCurrent(){
+    var y = window.scrollY + 140, cur = 0;
+    progHeads.forEach(function(h, i){ if (h.getBoundingClientRect().top + window.scrollY <= y) cur = i; });
+    return cur;
+  }
+  function progHeadText(info){
+    if (progLang === 'en') {
+      if (info.kind === 'pro') return 'Prologue ' + info.title;
+      if (info.kind === 'end') return 'Epilogue ' + info.title;
+      return 'Ch. ' + info.n + ' ' + info.title;
+    }
+    if (info.kind === 'pro') return '序章 ' + info.title;
+    if (info.kind === 'end') return '終章 ' + info.title;
+    return (info.n < 10 ? '0' + info.n : '' + info.n) + ' ' + info.title;
+  }
+  function updateProgLabel(){
+    if (!progLabel || !progHeads.length) return;
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? h.scrollTop / max : 0;
+    var done = (h.scrollTop + h.clientHeight >= h.scrollHeight - 2);
+    var el = progLabel.querySelector('.pl-in');
+    if (!el) return;
+    if (done) {
+      el.textContent = (progLang === 'en' ? 'Finished' : '已讀完');
+    } else {
+      var left = Math.max(1, Math.ceil((1 - p) * progMin));
+      el.textContent = progHeadText(progNums[progCurrent()]) + (progLang === 'en' ? ' · ' + left + ' min left' : ' · 剩 ' + left + ' 分鐘');
+    }
+    progLabel.style.visibility = (h.scrollTop > 240) ? 'visible' : 'hidden';
   }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
   if (topBtn) topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
@@ -145,6 +199,9 @@
       try { localStorage.setItem(key, on ? '1' : '0'); } catch(e){}
     });
   }
+  /* print / save as PDF */
+  var pb = document.getElementById('print-btn');
+  if (pb) pb.addEventListener('click', function(){ window.print(); });
   /* copy link */
   var cp = document.getElementById('copy-link');
   if (cp) cp.addEventListener('click', function(){
