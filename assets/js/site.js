@@ -241,8 +241,9 @@
   var toc = document.querySelector('.toc');
   if (toc && window.innerWidth >= 1100) toc.setAttribute('open', '');
 
-  /* audio player (2.3): zh article pages only. Play/pause, click-to-seek
-     track, speed cycle 1.0 -> 1.25 -> 1.5, time display, reset on end. */
+  /* audio player (2.3 + 2c): zh article pages only. Play/pause, click-to-seek
+     track, speed cycle 1.0 -> 1.25 -> 1.5 -> 2.0 -> 0.8, Media Session API,
+     auto-play next article (data-next) on ended. */
   var ap = document.querySelector('.audio-player');
   if (ap) {
     var au = ap.querySelector('audio');
@@ -251,7 +252,7 @@
     var fill = ap.querySelector('.ap-fill');
     var curEl = ap.querySelector('.ap-cur');
     var rateBtn = ap.querySelector('.ap-rate');
-    var RATES = [1, 1.25, 1.5];
+    var RATES = [1, 1.25, 1.5, 2, 0.8];
     var rateIdx = 0;
     function apFmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
     function apSync(){
@@ -264,7 +265,15 @@
     if (playBtn) playBtn.addEventListener('click', function(){ if (au.paused) { au.play(); } else { au.pause(); } });
     au.addEventListener('play', function(){ if (playBtn) playBtn.textContent = '❚❚'; });
     au.addEventListener('pause', function(){ if (playBtn) playBtn.textContent = '▶'; });
-    au.addEventListener('ended', function(){ if (playBtn) playBtn.textContent = '▶'; au.currentTime = 0; apSync(); });
+    au.addEventListener('ended', function(){
+      if (playBtn) playBtn.textContent = '▶';
+      au.currentTime = 0; apSync();
+      var nxt = au.getAttribute('data-next');
+      if (nxt) {
+        try { sessionStorage.setItem('sf-autoplay', '1'); } catch (e) {}
+        window.location.href = nxt;
+      }
+    });
     au.addEventListener('timeupdate', apSync);
     au.addEventListener('loadedmetadata', apSync);
     if (track) track.addEventListener('click', function(ev){
@@ -283,5 +292,21 @@
       au.playbackRate = RATES[rateIdx];
       rateBtn.textContent = RATES[rateIdx].toFixed(2).replace(/0$/, '') + 'x';
     });
+    if ('mediaSession' in navigator) {
+      try {
+        var h1 = document.querySelector('h1');
+        navigator.mediaSession.metadata = new MediaMetadata({ title: (h1 ? h1.textContent : document.title).trim(), artist: 'SlowFolio 人間手札', album: 'Slowfolio' });
+        navigator.mediaSession.setActionHandler('play', function(){ au.play(); });
+        navigator.mediaSession.setActionHandler('pause', function(){ au.pause(); });
+        navigator.mediaSession.setActionHandler('seekto', function(d){ if (d && typeof d.seekTime === 'number') au.currentTime = d.seekTime; });
+      } catch (e) {}
+    }
+    try {
+      if (sessionStorage.getItem('sf-autoplay') === '1') {
+        sessionStorage.removeItem('sf-autoplay');
+        var p = au.play();
+        if (p && p.catch) p.catch(function(){});
+      }
+    } catch (e) {}
     apSync();
   }

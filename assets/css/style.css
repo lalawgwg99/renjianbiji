@@ -288,11 +288,13 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .audio-player{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:10px;background:var(--paper2);padding:12px 16px;margin:24px 0;font-family:var(--sans)}
 .audio-player .ap-play{flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:var(--card);color:var(--ink);font-size:15px;line-height:1;cursor:pointer}
 .audio-player .ap-label{flex:0 0 auto;font-size:13.5px;letter-spacing:.12em;color:var(--muted)}
+.audio-player .ap-narrator{flex:0 0 auto;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.ap-narrator-note{font-size:13px;color:var(--muted);margin:10px 0 0}
 .audio-player .ap-track{flex:1;height:3px;background:var(--line2);border-radius:2px;cursor:pointer;position:relative}
 .audio-player .ap-fill{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:2px;width:0}
 .audio-player .ap-time{flex:0 0 auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .audio-player .ap-rate{flex:0 0 auto;border:1px solid var(--line2);background:var(--card);color:var(--ink2);border-radius:999px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
-@media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label{display:none}.audio-player .ap-track{height:10px}.audio-player .ap-track::before{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}}
+@media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label,.audio-player .ap-narrator{display:none}.audio-player .ap-track{height:10px}.audio-player .ap-track::before{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}}
 /* resume-reading bar (2.2): hidden until JS finds a saved chapter */
 .resume-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--gold);background:var(--paper2);border-radius:10px;padding:12px 16px;margin:20px 0 4px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
 .resume-bar[hidden]{display:none}
