@@ -880,5 +880,61 @@
   "date": "2026-11-17",
   "url": "/articles/bitcoin-pizza-day/",
   "url_en": "/en/articles/bitcoin-pizza-day/"
+ },
+ {
+  "title": "第二次世界大戰：六年重塑世界",
+  "title_en": "World War II: Six Years That Remade the World",
+  "tags": "",
+  "subtitle": "1939 年 9 月 1 日，世界滑向深淵；六年之後，現代世界從廢墟裡長了出來。",
+  "subtitle_en": "On 1 September 1939, the world slid into the abyss; six years later, the modern world grew out of the ruins.",
+  "excerpt": "1939 年 9 月 1 日凌晨，德軍坦克越過波蘭邊境，世界在一夜之間滑向深淵。六年之後，約 7,000 萬至 8,500 萬人死去，整座大陸化為廢墟，而我們至今仍活在那場戰爭劃出的世界裡。[11][2]",
+  "excerpt_en": "In the early hours of 1 September 1939, German tanks crossed the Polish border, and the world slid into the abyss overnight. Six years later…",
+  "cat": "歷史與文明",
+  "cat_en": "History & Civilization",
+  "date": "2026-11-17",
+  "url": "/articles/world-war-ii/",
+  "url_en": "/en/articles/world-war-ii/"
+ },
+ {
+  "title": "馬多夫：650 億美元的謊言",
+  "title_en": "Bernie Madoff: The $65 Billion Lie",
+  "tags": "",
+  "subtitle": "他每月都賺錢，從不虧損；監管者查了五次，一無所獲。650 億美元的謊言，真正的貨幣是信任。",
+  "subtitle_en": "He made money every month and never lost. Regulators looked five times and found nothing. A $65 billion lie whose real currency was trust.",
+  "excerpt": "2008 年 12 月 11 日清晨，聯邦調查局的探員走進曼哈頓一間頂樓公寓，逮捕了 70 歲的伯納德·馬多夫。就在前一晚，他向兩個兒子坦承，自己經營的資產管理事業「全都是一個大謊言」。[4]",
+  "excerpt_en": "On the morning of December 11, 2008, agents of the Federal Bureau of Investigation walked into a Manhattan penthouse and arrested 70-year-ol…",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/madoff-ponzi/",
+  "url_en": "/en/articles/madoff-ponzi/"
+ },
+ {
+  "title": "愛因斯坦：改寫物理學的奇蹟年",
+  "title_en": "Einstein's Miracle Year: Four Papers That Rewrote Physics",
+  "tags": "",
+  "subtitle": "一個專利局三級技術員，如何在一年之內顛覆牛頓兩百年的物理",
+  "subtitle_en": "How a third-class clerk at the patent office overturned two hundred years of Newtonian physics in a single year",
+  "excerpt": "1905 年的春天，伯恩老城克拉姆街 49 號二樓的小公寓裡，一個 26 歲的年輕人伏案寫作，窗外是石板路與拱廊，桌上是幾疊稿紙。他的正職是專利局的三級技術員，白天審查別人的發明；到了夜裡，他寫的東西將在一年之內改寫物理學。[6]",
+  "excerpt_en": "In the spring of 1905, in a small second-floor apartment at Kramgasse 49 in Bern's old town, a 26-year-old sat writing at his desk, cobblest…",
+  "cat": "科學與世界",
+  "cat_en": "Science & the World",
+  "date": "2026-11-17",
+  "url": "/articles/einstein/",
+  "url_en": "/en/articles/einstein/"
+ },
+ {
+  "title": "比特幣現貨 ETF：華爾街正式收編加密貨幣",
+  "title_en": "The Bitcoin ETF: Wall Street Finally Lets Crypto In",
+  "tags": "",
+  "subtitle": "十五年前，它揚言要繞開所有中介；2024 年，它以 ETF 之姿回到中介懷裡。",
+  "subtitle_en": "Fifteen years ago it promised to route around every middleman; in 2024 it came home to them, dressed as an ETF.",
+  "excerpt": "2024 年 1 月 10 日，美國證券交易委員會批准了 11 檔比特幣現貨 ETF，隔天開始交易。[1] 一個十五年前誕生時揚言要繞開所有中介的東西，終於被中介們請進了大廳——穿著西裝，掛牌上市，走進退休帳戶。",
+  "excerpt_en": "On January 10, 2024, the U.S. Securities and Exchange Commission approved 11 spot Bitcoin ETFs, and trading began the next day.[1] A thing b…",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/bitcoin-etf-2024/",
+  "url_en": "/en/articles/bitcoin-etf-2024/"
  }
 ]
