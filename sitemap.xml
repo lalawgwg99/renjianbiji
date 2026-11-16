@@ -82,6 +82,8 @@
   <url><loc>https://slowfolio.app/en/articles/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
   <url><loc>https://slowfolio.app/timeline/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://slowfolio.app/en/timeline/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://slowfolio.app/explore/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://slowfolio.app/en/explore/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://slowfolio.app/series/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://slowfolio.app/en/series/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://slowfolio.app/series/bubbles/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
