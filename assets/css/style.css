@@ -105,7 +105,7 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .tl-list li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .tl-list .tl-year{font-family:var(--sans);font-size:15px;font-weight:700;color:var(--gold);white-space:nowrap}
 .tl-list h3{font-size:19px;margin:0 0 2px;line-height:1.4}
-@media(max-width:640px){.tl-list li{grid-template-columns:84px 1fr;gap:12px}.tl-list h3{font-size:17px}}
+@media(max-width:640px){.tl-list li{grid-template-columns:84px 1fr;gap:12px}.tl-list h3{font-size:17px}.tl-list .tl-year{font-size:13.5px}}
 .tl-list h3 a{color:var(--ink)}
 .tl-list p{margin:0;font-size:13.5px;color:var(--muted);font-family:var(--sans)}
 .tl-note{font-size:15px;color:var(--ink2);max-width:640px}
@@ -217,6 +217,8 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .grade-D{color:#6E7268;border-color:#9A9A8E}
 .src-legend{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.8;margin-top:12px}
 .policy table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;line-height:1.7;margin:10px 0 22px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-wrap table{min-width:520px}
 .policy th,.policy td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 .policy th{background:var(--paper2);white-space:nowrap}
 .rel{border-top:1px solid var(--line);margin-top:40px;padding-top:28px}
@@ -286,7 +288,7 @@ body.warm-paper .to-top{background:#FCF7E9;border-color:#D2C4A0}
 .audio-player .ap-fill{position:absolute;left:0;top:0;height:100%;background:var(--gold);border-radius:2px;width:0}
 .audio-player .ap-time{flex:0 0 auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .audio-player .ap-rate{flex:0 0 auto;border:1px solid var(--line2);background:var(--card);color:var(--ink2);border-radius:999px;padding:5px 10px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
-@media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label{display:none}}
+@media(max-width:640px){.audio-player{gap:10px;padding:10px 12px}.audio-player .ap-label{display:none}.audio-player .ap-track{height:10px}.audio-player .ap-track::before{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}}
 /* resume-reading bar (2.2): hidden until JS finds a saved chapter */
 .resume-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--gold);background:var(--paper2);border-radius:10px;padding:12px 16px;margin:20px 0 4px;font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink2)}
 .resume-bar[hidden]{display:none}
