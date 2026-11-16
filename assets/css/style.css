@@ -208,6 +208,10 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .sources h2{font-family:var(--sans);font-size:13px;letter-spacing:.25em;color:var(--muted);margin:0 0 14px;text-transform:uppercase}
 .sources ul{margin:0;padding-left:20px}
 .sources li{font-family:var(--sans);font-size:14.5px;line-height:1.9;color:var(--ink2);margin:6px 0;word-break:break-word}
+.sources li:target{background:var(--green-soft)}
+/* inline citations (phase 2 batch 5): <a class="cite" href="#src-N">[N]</a> in body text */
+.article-body a.cite{font-family:var(--sans);font-size:12px;line-height:0;vertical-align:super;color:var(--gold);text-decoration:none}
+.article-body a.cite:hover{text-decoration:underline}
 .sources li a{color:var(--green)}
 .sources .src-note{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:12px}
 .src-grade{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:700;line-height:1;border:1px solid;border-radius:999px;padding:3px 7px;margin-left:8px;vertical-align:2px;white-space:nowrap}
