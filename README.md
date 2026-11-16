@@ -1,4 +1,4 @@
-# 人間筆記 v2
+# SlowFolio v2
 
 多頁靜態站（Cloudflare Pages，沿用 repo `lalawgwg99/renjianbiji`，不換框架）。
 
