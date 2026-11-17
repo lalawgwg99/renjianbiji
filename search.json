@@ -1216,5 +1216,61 @@
   "date": "2026-11-17",
   "url": "/articles/newton/",
   "url_en": "/en/articles/newton/"
+ },
+ {
+  "title": "冷戰：四十年的懸崖對峙",
+  "title_en": "The Cold War: Forty Years on the Brink",
+  "tags": "",
+  "subtitle": "1947 到 1991 年，兩個超級大國從未直接開戰，卻把全世界變成棋盤——這場沒有硝煙的戰爭，教會人類如何與毀滅共存。",
+  "subtitle_en": "From 1947 to 1991, the two superpowers never fought each other directly — yet they turned the whole world into a chessboard. A war without gunfire taught humanity how to live with annihilation.",
+  "excerpt": "1961 年 10 月 27 日，柏林查理檢查站，美軍與蘇軍的坦克在相距不到 100 公尺的地方，砲口對著砲口，僵持了 16 個小時。",
+  "excerpt_en": "On October 27, 1961, at Checkpoint Charlie in Berlin, American and Soviet tanks stood less than a hundred metres apart, barrels aimed at eac…",
+  "cat": "歷史與文明",
+  "cat_en": "History & Civilization",
+  "date": "2026-11-17",
+  "url": "/articles/cold-war/",
+  "url_en": "/en/articles/cold-war/"
+ },
+ {
+  "title": "梧桐樹協議：24 個經紀人在一棵樹下",
+  "title_en": "The Buttonwood Agreement: Twenty-Four Brokers Under a Tree",
+  "tags": "",
+  "subtitle": "1792 年 5 月 17 日，一張只有兩句話的紙，約定只跟彼此交易、佣金不低於 0.25%——紐約證交所就從這張紙開始。",
+  "subtitle_en": "On May 17, 1792, a paper with just two sentences promised to trade only with each other, at no less than 0.25 percent commission — and the New York Stock Exchange began with that paper.",
+  "excerpt": "1792 年春天，紐約的證券價格在幾週內暴跌 30%。有人傾家蕩產，有人被追債追到無處可躲，整個城市的信用，一夜之間蒸發了。",
+  "excerpt_en": "In the spring of 1792, securities prices in New York fell 30 percent in a matter of weeks. Fortunes vanished. Creditors chased debtors throu…",
+  "cat": "錢與人性",
+  "cat_en": "Money & Human Nature",
+  "date": "2026-11-17",
+  "url": "/articles/buttonwood-1792/",
+  "url_en": "/en/articles/buttonwood-1792/"
+ },
+ {
+  "title": "武則天：中國唯一的女皇帝",
+  "title_en": "Wu Zetian: China's Only Female Emperor",
+  "tags": "",
+  "subtitle": "從 14 歲的才人到 67 歲登基稱帝，她在男人的帝國裡走了 50 年——一塊不刻字的石碑，留給後人自己寫評語。",
+  "subtitle_en": "From a fourteen-year-old concubine to an empress enthroned at sixty-seven, she walked fifty years inside an empire built for men — and left a wordless stele for posterity to judge.",
+  "excerpt": "陝西乾縣，梁山腳下，一塊高 7.53 公尺的石碑立在陵前，碑面光潔，一個字也沒有。",
+  "excerpt_en": "In Qian County, Shaanxi, at the foot of Mount Liang, a stone stele 7.53 metres tall stands before a tomb. Its face is smooth. Not a single c…",
+  "cat": "歷史與文明",
+  "cat_en": "History & Civilization",
+  "date": "2026-11-17",
+  "url": "/articles/wu-zetian/",
+  "url_en": "/en/articles/wu-zetian/"
+ },
+ {
+  "title": "台股 12682：全民瘋股的那一年",
+  "title_en": "Taiwan's 12,682: The Year Everyone Bought Stocks",
+  "tags": "",
+  "subtitle": "1990 年 2 月 12 日，加權指數衝上 12,682 點；8 個月後只剩 2,485 點。一個島用三十年才爬回來——泡沫從來不是數字，是人性。",
+  "subtitle_en": "On February 12, 1990, the TAIEX touched 12,682 points; eight months later only 2,485 remained. It took the island thirty years to climb back — a bubble was never a number. It was human nature.",
+  "excerpt": "1990 年 2 月 12 日，星期一。台北的證券營業廳裡，加權指數盤中衝上 12,682 點——那是台灣股市有史以來最高的數字，也是此後 30 年無人能及的數字。",
+  "excerpt_en": "Monday, February 12, 1990. In the brokerage halls of Taipei, the weighted index touched 12,682 points intraday — the highest number in the h…",
+  "cat": "台灣",
+  "cat_en": "Taiwan",
+  "date": "2026-11-17",
+  "url": "/articles/taiwan-12682/",
+  "url_en": "/en/articles/taiwan-12682/"
  }
 ]
