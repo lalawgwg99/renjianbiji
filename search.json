@@ -992,5 +992,61 @@
   "date": "2026-11-17",
   "url": "/articles/french-revolution/",
   "url_en": "/en/articles/french-revolution/"
+ },
+ {
+  "title": "《孫子兵法》：不戰而勝",
+  "title_en": "The Art of War: Winning Without Fighting",
+  "tags": "",
+  "subtitle": "一本 2500 年前的書，為什麼還在教人怎麼贏——以及怎麼不打。",
+  "subtitle_en": "A book written 2,500 years ago still teaches us how to win — and how not to fight.",
+  "excerpt": "有一本書，寫成於 2500 多年前，只有 13 篇、約 6000 字，卻至今仍在軍校的課堂、企業的董事會與談判桌上被翻開。它不講熱血，不講忠義，也不講任何一場具體的戰役。它講的，是人在輸贏之前，先想清楚輸贏值不值得。這本書叫《孫子兵法》。",
+  "excerpt_en": "There is a book written more than 2,500 years ago — 13 chapters, about 6,000 characters — still opened in military classrooms, boardrooms, a…",
+  "cat": "書與思想",
+  "cat_en": "Books & Ideas",
+  "date": "2026-11-17",
+  "url": "/articles/art-of-war/",
+  "url_en": "/en/articles/art-of-war/"
+ },
+ {
+  "title": "板塊構造：會漂移的大陸",
+  "title_en": "Plate Tectonics: The Continents That Drift",
+  "tags": "",
+  "subtitle": "一個被嘲笑半世紀的理論，如何靠海底的一條條磁帶翻盤",
+  "subtitle_en": "How a theory laughed at for half a century was vindicated by magnetic tape on the seafloor",
+  "excerpt": "1912 年 1 月 6 日，德國法蘭克福。一位 31 歲的氣象學家站上講台，對著滿屋子的地質學家，說出了一件在當時近乎荒謬的事：我們腳下的大陸會動。[9]",
+  "excerpt_en": "On 6 January 1912, in Frankfurt, Germany, a 31-year-old meteorologist stepped up to a lectern, faced a room full of geologists, and said som…",
+  "cat": "科學與世界",
+  "cat_en": "Science & the World",
+  "date": "2026-11-17",
+  "url": "/articles/plate-tectonics/",
+  "url_en": "/en/articles/plate-tectonics/"
+ },
+ {
+  "title": "西班牙流感：比戰爭死更多人的瘟疫",
+  "title_en": "The Spanish Flu of 1918: The Pandemic That Killed More Than the War",
+  "tags": "",
+  "subtitle": "一場被戰爭審查藏起來、又被整個社會遺忘的大流行，殺死的人比第一次世界大戰還多。",
+  "subtitle_en": "A pandemic hidden by wartime censorship and then forgotten by a whole society — it killed more people than the First World War.",
+  "excerpt": "1918 年 10 月，美國費城的街頭堆滿了棺材。掘墓的人手不夠，棺材不夠，連替死者禱告的牧師都不夠。一個城市在 4 個月裡失去了超過 1.2 萬人，而在同一時間，歐洲的戰壕裡，第一次世界大戰正走向尾聲。[7]",
+  "excerpt_en": "In October 1918, the streets of Philadelphia were piled with coffins. There were not enough gravediggers, not enough coffins, not even enoug…",
+  "cat": "人與社會",
+  "cat_en": "People & Society",
+  "date": "2026-11-17",
+  "url": "/articles/spanish-flu-1918/",
+  "url_en": "/en/articles/spanish-flu-1918/"
+ },
+ {
+  "title": "《紅樓夢》：一座園子寫盡興衰",
+  "title_en": "Dream of the Red Chamber: One Garden, the Rise and Fall of a Family",
+  "tags": "",
+  "subtitle": "一部寫了兩百多年還沒寫完的小說，寫的其實是我們每個人住過的那座園子。",
+  "subtitle_en": "A novel unfinished for more than two centuries — about the garden every one of us has lived in.",
+  "excerpt": "一塊石頭因為沒有資格補天，被丟在人間。它看了一場富貴，又看了一場敗落，最後回到山上，把故事寫在自己身上。這就是《紅樓夢》的開頭——而這本書本身，也像那塊石頭一樣，至今沒有一個完整的身世。",
+  "excerpt_en": "A stone, judged unfit to mend the sky, is cast down into the human world. It watches a family rise in splendour, watches it fall, and return…",
+  "cat": "書與思想",
+  "cat_en": "Books & Ideas",
+  "date": "2026-11-17",
+  "url": "/articles/dream-red-chamber/",
+  "url_en": "/en/articles/dream-red-chamber/"
  }
 ]
