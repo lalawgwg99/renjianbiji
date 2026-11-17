@@ -1160,5 +1160,61 @@
   "date": "2026-11-17",
   "url": "/articles/prohibition/",
   "url_en": "/en/articles/prohibition/"
+ },
+ {
+  "title": "《神曲》：地獄、煉獄與天堂",
+  "title_en": "The Divine Comedy: Hell, Purgatory, and Heaven",
+  "tags": "",
+  "subtitle": "一個被流放的人，如何用一首方言長詩寫出西方文學的起點——而地獄裡裝的，全是活生生的人。",
+  "subtitle_en": "How an exiled man wrote the starting point of Western literature in a vernacular epic — and why Hell is full of living human beings.",
+  "excerpt": "「在我們生命旅程的中途，我發現自己身處一座黑暗的森林，因為正路已經迷失。」",
+  "excerpt_en": "\"Midway upon the journey of our life, I found myself within a forest dark, for the straightforward pathway had been lost.\"",
+  "cat": "書與思想",
+  "cat_en": "Books & Ideas",
+  "date": "2026-11-17",
+  "url": "/articles/divine-comedy/",
+  "url_en": "/en/articles/divine-comedy/"
+ },
+ {
+  "title": "明治維新：三十年從鎖國到強國",
+  "title_en": "The Meiji Restoration: Thirty Years from Seclusion to Great Power",
+  "tags": "",
+  "subtitle": "一場打著復古旗號的革命，如何讓一個島國在三十年內把羞辱變成燃料、把外來的炮火變成自己的軍艦——以及變強之後，為什麼停不下來。",
+  "subtitle_en": "A revolution flying the flag of restoration turned humiliation into fuel and foreign cannon fire into Japan's own warships in thirty years — and once it had become strong, why could it never stop?",
+  "excerpt": "1853 年 7 月 8 日，四艘黑船駛進浦賀灣，蒸汽的黑煙升上江戶灣的天空。[1]",
+  "excerpt_en": "On July 8, 1853, four black ships sailed into Uraga Bay, their steam smoke rising over Edo Bay.",
+  "cat": "人與社會",
+  "cat_en": "People & Society",
+  "date": "2026-11-17",
+  "url": "/articles/meiji-restoration/",
+  "url_en": "/en/articles/meiji-restoration/"
+ },
+ {
+  "title": "啟蒙運動：革命之前的理性",
+  "title_en": "The Enlightenment: Reason Before Revolution",
+  "tags": "",
+  "subtitle": "理性、科學與自由如何先改寫了人的腦袋，才改寫了世界——一場沒有流血的思想革命。",
+  "subtitle_en": "How reason, science, and liberty rewrote people's minds before they rewrote the world — a bloodless revolution of thought.",
+  "excerpt": "1789 年 7 月 14 日，巴黎群眾攻下巴士底獄。那一天常被當作革命的起點，其實它更像一場漫長思想實驗的收尾——火藥點燃之前，火種已經在書房、沙龍與印刷機旁燒了 100 年。",
+  "excerpt_en": "On July 14, 1789, a Paris crowd stormed the Bastille. That day is often treated as the beginning of the Revolution; in truth it was more lik…",
+  "cat": "書與思想",
+  "cat_en": "Books & Ideas",
+  "date": "2026-11-17",
+  "url": "/articles/enlightenment/",
+  "url_en": "/en/articles/enlightenment/"
+ },
+ {
+  "title": "牛頓：瘟疫中的兩年，改寫了科學",
+  "title_en": "Newton: Two Plague Years That Rewrote Science",
+  "tags": "",
+  "subtitle": "1665 年，瘟疫關閉了劍橋，一個 22 歲的青年回到鄉下。兩年後他帶回來的，是微積分、萬有引力與白光的祕密——還有一堂關於制度與人性的課。",
+  "subtitle_en": "In 1665, plague closed Cambridge, and a 22-year-old went home to the countryside. Two years later he returned with calculus, universal gravitation, and the secret of white light — and a lesson about institutions and human nature.",
+  "excerpt": "1665 年夏天，倫敦正在死去，而 22 歲的牛頓正在收拾行李，離開劍橋。",
+  "excerpt_en": "In the summer of 1665, London was dying, and a 22-year-old Isaac Newton was packing his bags to leave Cambridge.",
+  "cat": "科學與世界",
+  "cat_en": "Science & the World",
+  "date": "2026-11-17",
+  "url": "/articles/newton/",
+  "url_en": "/en/articles/newton/"
  }
 ]
