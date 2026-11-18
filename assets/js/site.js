@@ -227,7 +227,7 @@
         var ti = lang === 'en' ? it.title_en : it.title;
         var sub = lang === 'en' ? it.subtitle_en : it.subtitle;
         var cat = lang === 'en' ? it.cat_en : it.cat;
-        return '<li><h3><a href="' + u + '">' + ti + '</a></h3><p>' + sub + '</p><p class="art-meta"><span class="cat">' + cat + '</span> · ' + it.date + '</p></li>';
+        return '<li><h3><a href="' + u + '">' + ti + '</a></h3><p>' + sub + '</p><p class="art-meta"><span class="cat">' + cat + '</span></p></li>';
       }).join('');
     }
     fetch('/search.json').then(function(r){ return r.json(); }).then(function(j){ data = j; render(sq.value); });
