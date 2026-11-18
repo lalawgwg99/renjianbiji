@@ -245,10 +245,21 @@
   var shelf = document.getElementById('bookshelf');
   if (shelf) {
     var shelfDrag = false, shelfMoved = false, shelfStartX = 0, shelfStartL = 0;
+    var shelfArrows = document.querySelectorAll('[data-shelf-dir]');
+    function updateShelfArrows(){
+      var canScroll = shelf.scrollWidth > shelf.clientWidth + 1;
+      var atStart = shelf.scrollLeft <= 0;
+      var atEnd = shelf.scrollLeft + shelf.clientWidth >= shelf.scrollWidth - 1;
+      shelfArrows.forEach(function(btn){
+        var dir = parseInt(btn.getAttribute('data-shelf-dir'), 10);
+        btn.disabled = !canScroll || (dir < 0 ? atStart : atEnd);
+      });
+    }
     shelf.addEventListener('pointerdown', function(ev){
       if (ev.pointerType !== 'mouse') return;
       shelfDrag = true; shelfMoved = false;
       shelfStartX = ev.clientX; shelfStartL = shelf.scrollLeft;
+      shelf.classList.add('dragging');
     });
     shelf.addEventListener('pointermove', function(ev){
       if (!shelfDrag) return;
@@ -256,18 +267,22 @@
       shelf.scrollLeft = shelfStartL - (ev.clientX - shelfStartX);
     });
     ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(evt){
-      shelf.addEventListener(evt, function(){ shelfDrag = false; });
+      shelf.addEventListener(evt, function(){ shelfDrag = false; shelf.classList.remove('dragging'); });
     });
     shelf.addEventListener('click', function(ev){
       if (shelfMoved) { ev.preventDefault(); shelfMoved = false; }
     }, true);
-    document.querySelectorAll('[data-shelf-dir]').forEach(function(btn){
+    shelfArrows.forEach(function(btn){
       btn.addEventListener('click', function(){
         var card = shelf.querySelector('.shelf-card');
         var step = card ? card.getBoundingClientRect().width + 20 : 200;
         shelf.scrollBy({left: step * parseInt(btn.getAttribute('data-shelf-dir'), 10), behavior: 'smooth'});
       });
     });
+    shelf.addEventListener('scroll', updateShelfArrows);
+    window.addEventListener('load', updateShelfArrows);
+    window.addEventListener('resize', updateShelfArrows);
+    updateShelfArrows();
   }
 
   /* audio player (2.3 + 2c): zh article pages only. Play/pause, click-to-seek

@@ -98,9 +98,12 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .shelf-arrows{display:flex;gap:8px;margin-left:auto;align-self:center}
 .shelf-arrow{font-family:var(--sans);font-size:14px;color:var(--ink2);background:var(--card);border:1px solid var(--line2);border-radius:999px;width:34px;height:34px;line-height:1;padding:0}
 .shelf-arrow:hover{border-color:var(--gold);color:var(--gold)}
+.shelf-arrow:disabled{opacity:.35;cursor:default}
+.shelf-arrow:disabled:hover{border-color:var(--line2);color:var(--ink2)}
+.shelf.dragging{user-select:none}
 @media(max-width:640px){.shelf-card{flex-basis:136px}.shelf-arrows{display:none}}
 /* book covers: never crop a portrait cover in card slots */
-.pick img.cover-fit,.cat-card img.cover-fit,.art-list img.cover-fit,.weekly-grid img.cover-fit,.rel-list img.cover-fit{object-fit:contain;background:var(--card)}
+.pick img.cover-fit,.cat-card img.cover-fit,.art-list img.cover-fit,.rel-list img.cover-fit{object-fit:contain;background:var(--card)}
 .art-list h3{font-size:21px;margin:2px 0 6px;line-height:1.4}
 @media(max-width:640px){.art-list h3{font-size:17px}}
 .art-list h3 a{color:var(--ink)}
@@ -129,13 +132,6 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .series-block ol{margin:0;padding-left:20px}
 .series-block li{padding:5px 0}
 .series-block li a{color:var(--ink)}
-/* weekly */
-.weekly-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:760px){.weekly-grid{grid-template-columns:1fr}}
-.weekly-grid img{border-radius:8px;width:100%;aspect-ratio:16/9;object-fit:cover}
-.weekly-grid h3{font-size:18px;margin:12px 0 4px;line-height:1.45}
-.weekly-grid h3 a{color:var(--ink)}
-.weekly-grid p{font-size:14px;color:var(--muted);margin:0}
 /* about + newsletter */
 .about-block{max-width:var(--art);margin:0 auto;text-align:left}
 .about-block p{font-size:17px;line-height:1.9;color:var(--ink2)}
@@ -196,7 +192,6 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .toc li{padding:4px 0;font-size:15px}
 .toc a{color:var(--ink2)}
 .toc .chno{color:var(--gold);font-weight:700;margin-right:6px}
-@media(min-width:1100px){.toc{position:sticky;top:76px}}
 .article-body{font-size:var(--art-size,19px);line-height:1.95}
 .article-body h2{font-size:26px;margin:44px 0 14px;line-height:1.4}
 @media(max-width:640px){.article-body h2{font-size:22px}}
