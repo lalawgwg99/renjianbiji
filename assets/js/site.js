@@ -216,18 +216,22 @@
     var data = null, lang = document.documentElement.lang === 'en' ? 'en' : 'zh';
     function render(q){
       q = (q || '').trim().toLowerCase();
-      if (!q || !data) { sr.innerHTML = ''; return; }
-      var hits = data.filter(function(it){
-        var hay = (it.title + ' ' + it.title_en + ' ' + it.subtitle + ' ' + it.subtitle_en + ' ' + it.excerpt + ' ' + (it.excerpt_en || '') + ' ' + it.cat + ' ' + it.cat_en + ' ' + (it.tags || '')).toLowerCase();
+      var cnt = document.getElementById('search-count');
+      if (!q || !data) { sr.innerHTML = ''; if (cnt) cnt.textContent = ''; return; }
+      var all = data.filter(function(it){
+        var hay = (it.title + ' ' + it.title_en + ' ' + it.subtitle + ' ' + it.subtitle_en + ' ' + it.excerpt + ' ' + (it.excerpt_en || '') + ' ' + it.cat + ' ' + it.cat_en + ' ' + (it.tags || '') + ' ' + (it.text || '') + ' ' + (it.text_en || '')).toLowerCase();
         return q.split(/\s+/).every(function(w){ return hay.indexOf(w) !== -1; });
-      }).slice(0, 20);
+      });
+      if (cnt) cnt.textContent = all.length ? (lang === 'en' ? 'Found ' + all.length + ' article' + (all.length > 1 ? 's' : '') + (all.length > 20 ? ', showing first 20' : '') : '找到 ' + all.length + ' 篇文章' + (all.length > 20 ? '，顯示前 20 篇' : '')) : '';
+      var hits = all.slice(0, 20);
       if (!hits.length) { sr.innerHTML = '<li class="search-hint">' + sr.getAttribute('data-empty') + '</li>'; return; }
       sr.innerHTML = hits.map(function(it){
         var u = lang === 'en' ? it.url_en : it.url;
         var ti = lang === 'en' ? it.title_en : it.title;
         var sub = lang === 'en' ? it.subtitle_en : it.subtitle;
         var cat = lang === 'en' ? it.cat_en : it.cat;
-        return '<li><h3><a href="' + u + '">' + ti + '</a></h3><p>' + sub + '</p><p class="art-meta"><span class="cat">' + cat + '</span></p></li>';
+        var im = lang === 'en' ? (it.img_en || it.img) : it.img;
+        return '<li><img src="/' + im + '" alt="" loading="lazy" /><div><p class="art-meta"><span class="cat">' + cat + '</span></p><h3><a href="' + u + '">' + ti + '</a></h3><p>' + sub + '</p></div></li>';
       }).join('');
     }
     fetch('/search.json').then(function(r){ return r.json(); }).then(function(j){ data = j; render(sq.value); });
@@ -316,9 +320,11 @@
         localStorage.setItem('sf-last-listen', JSON.stringify({ slug: au.getAttribute('data-slug') || '', url: window.location.pathname, title: h1t ? h1t.textContent.trim() : document.title, seconds: Math.floor(au.currentTime) }));
       } catch (e) {}
     }
-    if (playBtn) playBtn.addEventListener('click', function(){ if (au.paused) { au.play(); } else { au.pause(); } });
+    if (playBtn) playBtn.addEventListener('click', function(){ if (au.paused) { playBtn.textContent = '…'; var pr = au.play(); if (pr && pr.catch) pr.catch(function(){ playBtn.textContent = '▶'; }); } else { au.pause(); } });
     au.addEventListener('play', function(){ if (playBtn) playBtn.textContent = '❚❚'; });
     au.addEventListener('pause', function(){ if (playBtn) playBtn.textContent = '▶'; });
+    au.addEventListener('waiting', function(){ if (playBtn) playBtn.textContent = '…'; });
+    au.addEventListener('playing', function(){ if (playBtn) playBtn.textContent = '❚❚'; });
     au.addEventListener('ended', function(){
       if (playBtn) playBtn.textContent = '▶';
       au.currentTime = 0; apSync();
