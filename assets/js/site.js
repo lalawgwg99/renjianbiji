@@ -241,6 +241,35 @@
   var toc = document.querySelector('.toc');
   if (toc && window.innerWidth >= 1100) toc.setAttribute('open', '');
 
+  /* bookshelf: drag-to-scroll (mouse only; touch uses native swipe) + arrow buttons */
+  var shelf = document.getElementById('bookshelf');
+  if (shelf) {
+    var shelfDrag = false, shelfMoved = false, shelfStartX = 0, shelfStartL = 0;
+    shelf.addEventListener('pointerdown', function(ev){
+      if (ev.pointerType !== 'mouse') return;
+      shelfDrag = true; shelfMoved = false;
+      shelfStartX = ev.clientX; shelfStartL = shelf.scrollLeft;
+    });
+    shelf.addEventListener('pointermove', function(ev){
+      if (!shelfDrag) return;
+      if (Math.abs(ev.clientX - shelfStartX) > 6) shelfMoved = true;
+      shelf.scrollLeft = shelfStartL - (ev.clientX - shelfStartX);
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(evt){
+      shelf.addEventListener(evt, function(){ shelfDrag = false; });
+    });
+    shelf.addEventListener('click', function(ev){
+      if (shelfMoved) { ev.preventDefault(); shelfMoved = false; }
+    }, true);
+    document.querySelectorAll('[data-shelf-dir]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var card = shelf.querySelector('.shelf-card');
+        var step = card ? card.getBoundingClientRect().width + 20 : 200;
+        shelf.scrollBy({left: step * parseInt(btn.getAttribute('data-shelf-dir'), 10), behavior: 'smooth'});
+      });
+    });
+  }
+
   /* audio player (2.3 + 2c): zh article pages only. Play/pause, click-to-seek
      track, speed cycle 1.0 -> 1.25 -> 1.5 -> 2.0 -> 0.8, Media Session API,
      auto-play next article (data-next) on ended. */

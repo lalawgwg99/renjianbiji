@@ -93,6 +93,22 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .art-list li:first-child{padding-top:0}
 @media(max-width:640px){.art-list li{grid-template-columns:104px 1fr;gap:14px;padding:18px 0}}
 .art-list img{border-radius:8px;width:100%;aspect-ratio:16/10;object-fit:cover}
+/* ---------- bookshelf: horizontal scrolling book covers ---------- */
+.shelf{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.shelf::-webkit-scrollbar{height:6px}
+.shelf::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+.shelf-card{flex:0 0 168px;scroll-snap-align:start}
+.shelf-card:hover{text-decoration:none}
+.shelf-card img{width:100%;aspect-ratio:2/3;object-fit:contain;background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 18px rgba(27,27,24,.12)}
+.shelf-card h3{font-size:16px;margin:12px 0 2px;line-height:1.4;color:var(--ink)}
+.shelf-card:hover h3{color:var(--green)}
+.shelf-card p{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0}
+.shelf-arrows{display:flex;gap:8px;margin-left:auto;align-self:center}
+.shelf-arrow{font-family:var(--sans);font-size:14px;color:var(--ink2);background:var(--card);border:1px solid var(--line2);border-radius:999px;width:34px;height:34px;line-height:1;padding:0}
+.shelf-arrow:hover{border-color:var(--gold);color:var(--gold)}
+@media(max-width:640px){.shelf-card{flex-basis:136px}.shelf-arrows{display:none}}
+/* book covers: never crop a portrait cover in card slots */
+.pick img.cover-fit,.cat-card img.cover-fit,.art-list img.cover-fit,.weekly-grid img.cover-fit,.rel-list img.cover-fit{object-fit:contain;background:var(--card)}
 .art-list h3{font-size:21px;margin:2px 0 6px;line-height:1.4}
 @media(max-width:640px){.art-list h3{font-size:17px}}
 .art-list h3 a{color:var(--ink)}
@@ -167,6 +183,11 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .article .byline b{color:var(--ink2);font-weight:700}
 .article figure.hero{margin:28px 0 8px;background:transparent;border:0;padding:0;border-radius:0}
 .article figure.hero img{border-radius:10px;width:100%}
+/* ---------- book hero: portrait cover, centred, never cropped ---------- */
+.article figure.hero-book{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:36px 24px;text-align:center}
+.article figure.hero-book img{width:auto;max-width:100%;max-height:640px;margin:0 auto;border-radius:4px;box-shadow:0 10px 28px rgba(27,27,24,.22)}
+.article figure.hero-book figcaption{margin-top:16px}
+@media(max-width:640px){.article figure.hero-book{padding:24px 16px}.article figure.hero-book img{max-height:480px}}
 .article figcaption{font-family:var(--sans);font-size:13.5px;color:var(--muted);line-height:1.6;margin:10px 0 0}
 .article-tools{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 4px}
 .article-tools button,.article-tools a.toolbtn{font-family:var(--sans);font-size:13.5px;border:1px solid var(--line2);background:var(--card);color:var(--ink2);border-radius:999px;padding:7px 13px;text-decoration:none}
