@@ -283,6 +283,61 @@
         shelf.scrollBy({left: step * parseInt(btn.getAttribute('data-shelf-dir'), 10), behavior: 'smooth'});
       });
     });
+    /* bookshelf auto-rotate: one card every 4s, step by step (not a marquee).
+       Pauses while the user interacts, on hover/focus, when the tab is hidden
+       or the shelf is off-screen; resumes 5s after the interaction ends.
+       Disabled when the shelf cannot scroll, or with prefers-reduced-motion. */
+    var shelfAutoTimer = null, shelfResumeTimer = null;
+    var shelfHover = false, shelfFocus = false, shelfInView = true;
+    var shelfReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function shelfCanAuto(){
+      return !shelfReducedMotion && shelfInView && !document.hidden &&
+        shelf.scrollWidth > shelf.clientWidth + 1;
+    }
+    function shelfStep(){
+      if (!shelfCanAuto()) { shelfStopAuto(); return; }
+      var card = shelf.querySelector('.shelf-card');
+      var step = card ? card.getBoundingClientRect().width + 20 : 200;
+      var atEnd = shelf.scrollLeft + shelf.clientWidth >= shelf.scrollWidth - 1;
+      if (atEnd) shelf.scrollTo({left: 0, behavior: 'smooth'});
+      else shelf.scrollBy({left: step, behavior: 'smooth'});
+    }
+    function shelfStopAuto(){
+      if (shelfAutoTimer) { clearInterval(shelfAutoTimer); shelfAutoTimer = null; }
+      if (shelfResumeTimer) { clearTimeout(shelfResumeTimer); shelfResumeTimer = null; }
+    }
+    function shelfStartAuto(){
+      shelfStopAuto();
+      if (shelfCanAuto()) shelfAutoTimer = setInterval(shelfStep, 4000);
+    }
+    function shelfPauseForAWhile(){
+      shelfStopAuto();
+      shelfResumeTimer = setTimeout(shelfStartAuto, 5000);
+    }
+    shelf.addEventListener('pointerdown', shelfPauseForAWhile);
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(evt){
+      shelf.addEventListener(evt, shelfPauseForAWhile);
+    });
+    shelf.addEventListener('mouseenter', function(){ shelfHover = true; shelfStopAuto(); });
+    shelf.addEventListener('mouseleave', function(){ shelfHover = false; shelfPauseForAWhile(); });
+    shelf.addEventListener('focusin', function(){ shelfFocus = true; shelfStopAuto(); });
+    shelf.addEventListener('focusout', function(){ shelfFocus = false; shelfPauseForAWhile(); });
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) shelfStopAuto(); else shelfStartAuto();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        shelfInView = entries[0].isIntersecting;
+        if (shelfInView) shelfStartAuto(); else shelfStopAuto();
+      }, {threshold: 0.2}).observe(shelf);
+    }
+    shelfArrows.forEach(function(btn){
+      btn.addEventListener('click', shelfPauseForAWhile);
+    });
+    window.addEventListener('resize', function(){
+      if (!shelfHover && !shelfFocus && !shelfDrag) shelfStartAuto();
+    });
+    shelfStartAuto();
     shelf.addEventListener('scroll', updateShelfArrows);
     window.addEventListener('load', updateShelfArrows);
     window.addEventListener('resize', updateShelfArrows);
