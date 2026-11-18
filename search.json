@@ -1706,5 +1706,19 @@
   "date": "2026-11-18",
   "url": "/articles/taiwan-921-earthquake/",
   "url_en": "/en/articles/taiwan-921-earthquake/"
+ },
+ {
+  "title": "CRISPR：一把剪刀，如何讓人類第一次改寫自己",
+  "title_en": "CRISPR: How a Pair of Scissors Let Humanity Rewrite Itself for the First Time",
+  "tags": "",
+  "subtitle": "從細菌的免疫記憶，到 220 萬美元一劑的藥——改寫生命密碼的權力，第一次落到凡人手裡",
+  "subtitle_en": "From a bacterium's immune memory to a $2.2 million dose — the power to rewrite the code of life has fallen into ordinary hands for the first time",
+  "excerpt": "2012 年 6 月 28 日，《科學》雜誌刊登了一篇論文，標題長得讓人不想讀第二遍：〈一種可程式化的雙 RNA 引導 DNA 內切酶〉。那天沒有記者打電話，沒有頭條新聞。論文的作者之一珍妮佛·道納後來回憶，那天她唯一的引言，還是出現在美國能源部一則新聞稿裡。她說，雖然我們還沒證……",
+  "excerpt_en": "On June 28, 2012, the journal Science published a paper with a title so long nobody wanted to read it twice: \"A Programmable Dual-RNA-Guided…",
+  "cat": "科學與世界",
+  "cat_en": "Science & the World",
+  "date": "2026-11-18",
+  "url": "/articles/crispr/",
+  "url_en": "/en/articles/crispr/"
  }
 ]
