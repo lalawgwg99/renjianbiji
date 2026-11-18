@@ -95,6 +95,7 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .shelf-card h3{font-size:16px;margin:12px 0 2px;line-height:1.4;color:var(--ink)}
 .shelf-card:hover h3{color:var(--green)}
 .shelf-card p{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0}
+.books-grid{display:flex;flex-wrap:wrap;gap:20px;padding:4px 2px 18px}
 .shelf-arrows{display:flex;gap:8px;margin-left:auto;align-self:center}
 .shelf-arrow{font-family:var(--sans);font-size:14px;color:var(--ink2);background:var(--card);border:1px solid var(--line2);border-radius:999px;width:44px;height:44px;line-height:1;padding:0}
 .shelf-arrow:hover{border-color:var(--gold);color:var(--gold)}
