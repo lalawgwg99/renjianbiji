@@ -245,6 +245,19 @@
   var toc = document.querySelector('.toc');
   if (toc && window.innerWidth >= 1100) toc.setAttribute('open', '');
 
+  /* sources: collapsed <details>; open it when a [N] cite is clicked or the URL hash points at a source */
+  var srcDet = document.querySelector('.src-details');
+  if (srcDet) {
+    document.querySelectorAll('a.cite').forEach(function(c){
+      c.addEventListener('click', function(){ srcDet.setAttribute('open', ''); });
+    });
+    if (location.hash && /^#src-\d+$/.test(location.hash)) {
+      srcDet.setAttribute('open', '');
+      var srcT = document.getElementById(location.hash.slice(1));
+      if (srcT) srcT.scrollIntoView();
+    }
+  }
+
   /* bookshelf: drag-to-scroll (mouse only; touch uses native swipe) + arrow buttons */
   var shelf = document.getElementById('bookshelf');
   if (shelf) {
