@@ -81,9 +81,12 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .cat-card .rep{font-size:13.5px;color:var(--ink2);margin:6px 0 0;line-height:1.5}
 /* article list */
 .art-list{list-style:none;margin:0;padding:0}
-.art-list li{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line)}
+.art-list li{padding:22px 0;border-bottom:1px solid var(--line)}
 .art-list li:first-child{padding-top:0}
-@media(max-width:640px){.art-list li{grid-template-columns:104px 1fr;gap:14px;padding:18px 0}}
+.art-list a.art-card{display:grid;grid-template-columns:200px 1fr;gap:24px;color:var(--ink);text-decoration:none}
+.art-list a.art-card:hover{text-decoration:none}
+.art-list a.art-card:hover h3{color:var(--green)}
+@media(max-width:640px){.art-list li{padding:18px 0}.art-list a.art-card{grid-template-columns:104px 1fr;gap:14px}}
 .art-list img{border-radius:8px;width:100%;aspect-ratio:16/10;object-fit:cover}
 /* ---------- bookshelf: horizontal scrolling book covers ---------- */
 .shelf{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
@@ -107,7 +110,6 @@ h1,h2,h3{font-weight:700;line-height:1.35}
 .pick img.cover-fit,.cat-card img.cover-fit,.art-list img.cover-fit,.rel-list img.cover-fit{object-fit:contain;background:var(--card)}
 .art-list h3{font-size:21px;margin:2px 0 6px;line-height:1.4}
 @media(max-width:640px){.art-list h3{font-size:17px}}
-.art-list h3 a{color:var(--ink)}
 .art-list p{color:var(--ink2);font-size:15.5px;margin:0 0 8px;line-height:1.65}
 @media(max-width:640px){.art-list p{display:none}}
 .art-meta{font-family:var(--sans);font-size:13px;color:var(--muted)}
@@ -261,6 +263,7 @@ body.dark-read .site-header{background:#151613;border-color:#2C2C28}
 body.dark-read .brand-name,body.dark-read .main-nav a,body.dark-read .article h1,body.dark-read .article-body h2{color:#EDE9DB}
 body.dark-read a{color:#8FBEA6}
 body.dark-read .sources li a,body.dark-read .main-nav a[aria-current="page"],body.dark-read .art-meta .cat,body.dark-read .cat-card:hover h3,body.dark-read .mobile-nav a:hover{color:#8FBEA6}
+body.dark-read .art-list a.art-card h3{color:#8FBEA6}
 body.dark-read .article .subtitle,body.dark-read .article-body p,body.dark-read .article-body li{color:#D8D4C6}
 body.dark-read .article .byline,body.dark-read .sources,body.dark-read .rel,body.dark-read .pager{border-color:#2C2C28}
 body.dark-read .toc{background:#1D1E1B;border-color:#2C2C28}

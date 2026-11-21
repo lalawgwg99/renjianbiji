@@ -299,12 +299,15 @@
     /* bookshelf auto-rotate: one card every 4s, step by step (not a marquee).
        Pauses while the user interacts, on hover/focus, when the tab is hidden
        or the shelf is off-screen; resumes 5s after the interaction ends.
-       Disabled when the shelf cannot scroll, or with prefers-reduced-motion. */
+       Disabled when the shelf cannot scroll, with prefers-reduced-motion,
+       or on touch devices (pointer: coarse) — auto-rotate fights the user's
+       own swipe there. Arrows and swipe still work on touch. */
     var shelfAutoTimer = null, shelfResumeTimer = null;
     var shelfHover = false, shelfFocus = false, shelfInView = true;
     var shelfReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var shelfCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
     function shelfCanAuto(){
-      return !shelfReducedMotion && shelfInView && !document.hidden &&
+      return !shelfReducedMotion && !shelfCoarsePointer && shelfInView && !document.hidden &&
         shelf.scrollWidth > shelf.clientWidth + 1;
     }
     function shelfStep(){
